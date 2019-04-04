@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rY9-64-M1E">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ViewController-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" userLabel="ViewController" customClass="ViewController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nSa-Rx-tFw" customClass="FSCalendar">
+                                <rect key="frame" x="0.0" y="98" width="375" height="275"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="14g-Co-8yp"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="m7Y-46-Ppq"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="nfq-bK-ZMF"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ibV-75-e9p">
+                                <rect key="frame" x="0.0" y="395" width="148" height="30"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="21D-vW-Qit"/>
+                                    <constraint firstAttribute="width" constant="148" id="JgJ-gQ-RYI"/>
+                                </constraints>
+                                <state key="normal" title="Week Mode">
+                                    <color key="titleColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="weekMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZtH-nc-CTb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DOB-Xg-MS0">
+                                <rect key="frame" x="227" y="395" width="148" height="30"/>
+                                <color key="backgroundColor" red="0.80392156859999997" green="0.80784313730000001" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="hlQ-Ek-qWm"/>
+                                    <constraint firstAttribute="width" constant="148" id="zOn-KW-YXY"/>
+                                </constraints>
+                                <state key="normal" title="Month Mode">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="monthMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Gjl-nt-sIg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qa0-FH-Cy9">
+                                <rect key="frame" x="113.66666666666669" y="433" width="148" height="30"/>
+                                <color key="backgroundColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="148" id="0fB-lZ-CKg"/>
+                                    <constraint firstAttribute="height" constant="30" id="LD0-Gw-4Ag"/>
+                                </constraints>
+                                <state key="normal" title="Day Mode">
+                                    <color key="titleColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="dayMode:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3P3-dt-Y2m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="nSa-Rx-tFw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0TC-k9-ncy"/>
+                            <constraint firstAttribute="trailing" secondItem="DOB-Xg-MS0" secondAttribute="trailing" id="H8d-GI-IpM"/>
+                            <constraint firstItem="nSa-Rx-tFw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ki8-W8-fhq"/>
+                            <constraint firstItem="DOB-Xg-MS0" firstAttribute="top" secondItem="nSa-Rx-tFw" secondAttribute="bottom" constant="22" id="RLn-dw-7fN"/>
+                            <constraint firstItem="Qa0-FH-Cy9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WSr-xX-FPZ"/>
+                            <constraint firstItem="ibV-75-e9p" firstAttribute="top" secondItem="nSa-Rx-tFw" secondAttribute="bottom" constant="22" id="etT-YV-sVk"/>
+                            <constraint firstItem="Qa0-FH-Cy9" firstAttribute="top" secondItem="ibV-75-e9p" secondAttribute="bottom" constant="8" id="f7f-Ud-LVl"/>
+                            <constraint firstItem="nSa-Rx-tFw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="kSR-fg-LYi"/>
+                            <constraint firstItem="ibV-75-e9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tl2-Bp-ojC"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="1iR-9f-Ba0"/>
+                    <connections>
+                        <outlet property="calendar" destination="nSa-Rx-tFw" id="QSw-Jw-6DG"/>
+                        <segue destination="5hv-ze-TUV" kind="show" identifier="goToCalendarKit" id="p2D-jG-UKz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1079.2" y="136.69950738916256"/>
+        </scene>
+        <!--Calendar Kit Main Controller-->
+        <scene sceneID="l37-eZ-rMo">
+            <objects>
+                <viewController id="5hv-ze-TUV" customClass="CalendarKitMainController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uAD-31-t3E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="ziu-k4-8ia"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9LN-jD-Lq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1909.5999999999999" y="134.48275862068965"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="5n7-xw-mhS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rY9-64-M1E" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fg2-d0-gha">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ccO-vT-jvt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dge-go-Prj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="136.69950738916256"/>
+        </scene>
+    </scenes>
+</document>
