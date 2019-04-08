@@ -16,6 +16,8 @@
 		A50DDF09225657830028C6E4 /* CalendarKitMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF08225657830028C6E4 /* CalendarKitMainController.swift */; };
 		A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */; };
 		A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */; };
+		A50DDF132256C06E0028C6E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */; };
+		A5243195225A66AB002705CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5243194225A66AB002705CB /* SignUpController.swift */; };
 		ECE5F78A73C577A14C447BC1 /* Pods_Appointments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 061FD805D67E0DE95A1B4DA6 /* Pods_Appointments.framework */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,8 @@
 		A50DDF08225657830028C6E4 /* CalendarKitMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarKitMainController.swift; sourceTree = "<group>"; };
 		A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGenerator.swift; sourceTree = "<group>"; };
+		A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A5243194225A66AB002705CB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,18 +81,44 @@
 		A50DDEF32253C2E30028C6E4 /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
+				A535AF1C225A5F02002F6539 /* Model */,
 				A50DDEF42253C2E30028C6E4 /* AppDelegate.swift */,
-				A50DDEF62253C2E30028C6E4 /* ViewController.swift */,
-				A50DDEF82253C2E30028C6E4 /* Main.storyboard */,
+				A535AF1A225A5EAF002F6539 /* Controllers */,
+				A535AF1B225A5EE2002F6539 /* View */,
 				A50DDEFB2253C2E40028C6E4 /* Assets.xcassets */,
 				A50DDEFD2253C2E40028C6E4 /* LaunchScreen.storyboard */,
 				A50DDF002253C2E40028C6E4 /* Info.plist */,
+				A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */,
+			);
+			path = Appointments;
+			sourceTree = "<group>";
+		};
+		A535AF1A225A5EAF002F6539 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A50DDEF62253C2E30028C6E4 /* ViewController.swift */,
 				A50DDF0622564BAD0028C6E4 /* CalendarKitController.swift */,
 				A50DDF08225657830028C6E4 /* CalendarKitMainController.swift */,
 				A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */,
 				A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */,
+				A5243194225A66AB002705CB /* SignUpController.swift */,
 			);
-			path = Appointments;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A535AF1B225A5EE2002F6539 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A50DDEF82253C2E30028C6E4 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		A535AF1C225A5F02002F6539 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BCDECB65ABC506CD6A8028EB /* Pods */ = {
@@ -161,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50DDEFF2253C2E40028C6E4 /* LaunchScreen.storyboard in Resources */,
+				A50DDF132256C06E0028C6E4 /* GoogleService-Info.plist in Resources */,
 				A50DDEFC2253C2E40028C6E4 /* Assets.xcassets in Resources */,
 				A50DDEFA2253C2E30028C6E4 /* Main.storyboard in Resources */,
 			);
@@ -176,17 +207,33 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Appointments/Pods-Appointments-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/CalendarKit/CalendarKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalendarKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -220,6 +267,7 @@
 			files = (
 				A50DDF0722564BAD0028C6E4 /* CalendarKitController.swift in Sources */,
 				A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */,
+				A5243195225A66AB002705CB /* SignUpController.swift in Sources */,
 				A50DDF09225657830028C6E4 /* CalendarKitMainController.swift in Sources */,
 				A50DDEF72253C2E30028C6E4 /* ViewController.swift in Sources */,
 				A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,10 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        window = UIWindow(frame: UIScreen.main.bounds)
 //        window?.backgroundColor = UIColor.white
 //        window?.makeKeyAndVisible()
-        
+            
 //        let dayViewController = CalendarKitMainController()
 //        let navigationController = UINavigationController(rootViewController: dayViewController)
 //        window?.rootViewController = navigationController
+        FirebaseApp.configure()
+        
         
         return true
     }
