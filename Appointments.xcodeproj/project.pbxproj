@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50AC06622625851003209E3 /* ProfSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50AC06522625851003209E3 /* ProfSchedule.swift */; };
+		A50AC068226258EE003209E3 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50AC067226258EE003209E3 /* Schedule.swift */; };
 		A50DDEF52253C2E30028C6E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDEF42253C2E30028C6E4 /* AppDelegate.swift */; };
 		A50DDEF72253C2E30028C6E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDEF62253C2E30028C6E4 /* ViewController.swift */; };
 		A50DDEFA2253C2E30028C6E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A50DDEF82253C2E30028C6E4 /* Main.storyboard */; };
@@ -18,6 +20,10 @@
 		A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */; };
 		A50DDF132256C06E0028C6E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */; };
 		A5243195225A66AB002705CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5243194225A66AB002705CB /* SignUpController.swift */; };
+		A5A48781225E12B4004EAE64 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A48780225E12B4004EAE64 /* Professor.swift */; };
+		A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CBE5BF2265184500F0F954 /* DateRange.swift */; };
+		A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */; };
+		A5F983E62263B313007E0CCF /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F983E52263B313007E0CCF /* Appointment.swift */; };
 		ECE5F78A73C577A14C447BC1 /* Pods_Appointments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 061FD805D67E0DE95A1B4DA6 /* Pods_Appointments.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +31,8 @@
 		061FD805D67E0DE95A1B4DA6 /* Pods_Appointments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Appointments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B020C3833ED0EFE767C6397 /* Pods-Appointments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appointments.release.xcconfig"; path = "Pods/Target Support Files/Pods-Appointments/Pods-Appointments.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A50FA5C2F3EFDF961F5B /* Pods-Appointments.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Appointments.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Appointments/Pods-Appointments.debug.xcconfig"; sourceTree = "<group>"; };
+		A50AC06522625851003209E3 /* ProfSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfSchedule.swift; sourceTree = "<group>"; };
+		A50AC067226258EE003209E3 /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		A50DDEF12253C2E30028C6E4 /* Appointments.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Appointments.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A50DDEF42253C2E30028C6E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A50DDEF62253C2E30028C6E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +46,10 @@
 		A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGenerator.swift; sourceTree = "<group>"; };
 		A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A5243194225A66AB002705CB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		A5A48780225E12B4004EAE64 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
+		A5CBE5BF2265184500F0F954 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
+		A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppointmentController.swift; sourceTree = "<group>"; };
+		A5F983E52263B313007E0CCF /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +114,7 @@
 				A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */,
 				A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */,
 				A5243194225A66AB002705CB /* SignUpController.swift */,
+				A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -117,6 +130,11 @@
 		A535AF1C225A5F02002F6539 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A5A48780225E12B4004EAE64 /* Professor.swift */,
+				A50AC06522625851003209E3 /* ProfSchedule.swift */,
+				A50AC067226258EE003209E3 /* Schedule.swift */,
+				A5F983E52263B313007E0CCF /* Appointment.swift */,
+				A5CBE5BF2265184500F0F954 /* DateRange.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -268,10 +286,16 @@
 				A50DDF0722564BAD0028C6E4 /* CalendarKitController.swift in Sources */,
 				A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */,
 				A5243195225A66AB002705CB /* SignUpController.swift in Sources */,
+				A5F983E62263B313007E0CCF /* Appointment.swift in Sources */,
+				A50AC06622625851003209E3 /* ProfSchedule.swift in Sources */,
 				A50DDF09225657830028C6E4 /* CalendarKitMainController.swift in Sources */,
 				A50DDEF72253C2E30028C6E4 /* ViewController.swift in Sources */,
+				A5A48781225E12B4004EAE64 /* Professor.swift in Sources */,
+				A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */,
 				A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */,
+				A50AC068226258EE003209E3 /* Schedule.swift in Sources */,
 				A50DDEF52253C2E30028C6E4 /* AppDelegate.swift in Sources */,
+				A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
