@@ -15,4 +15,5 @@ target 'Appointments' do
 	pod 'Firebase/Database'
     pod 'Firebase/Firestore'
     pod 'Firebase/Core'
+	pod 'FirebaseUI'
 end

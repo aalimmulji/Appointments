@@ -8,6 +8,8 @@
 
 import UIKit
 import FSCalendar
+import Firebase
+import FirebaseUI
 
 class ViewController: UIViewController {
 
@@ -17,6 +19,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       // FirebaseApp.configure()
         calendar.scrollDirection = .horizontal
         
 //        let calendar = FSCalendar(frame: CGRect(x: 0, y: 0, width: 320, height: 300))
@@ -34,6 +37,9 @@ class ViewController: UIViewController {
 //        calendar.heightAnchor.constraint(equalToConstant: 250).isActive = true
 //        self.calendar = calendar
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+       // FirebaseApp.configure()
     }
     
     @IBAction func weekMode(_ sender: Any) {
@@ -56,10 +62,6 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, boundingRectWillChange bounds: CGRect, animated: Bool) {
             calendar.frame = CGRect(origin: calendar.frame.origin, size: bounds.size)
     }
-    
-    
-    
-                
     
 }
 

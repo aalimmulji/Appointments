@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import FirebaseUI
 
-class SignUpController: UIViewController {
+class SignUpController: UIViewController, FUIAuthDelegate {
 
     @IBOutlet weak var usernameTextField: UITextField!
     
@@ -22,7 +23,11 @@ class SignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collRef = Firestore.firestore().collection("Users")
+//        if(FirebaseApp.defaultApp() == nil){
+//            FirebaseApp.configure()
+//        }
+        
+        //collRef = Firestore.firestore().collection("Users")
 
         // Do any additional setup after loading the view.
     }
@@ -43,5 +48,7 @@ class SignUpController: UIViewController {
             }
         }
     }
+    
+    
     
 }

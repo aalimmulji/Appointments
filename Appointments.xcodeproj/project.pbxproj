@@ -19,7 +19,43 @@
 		A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */; };
 		A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */; };
 		A50DDF132256C06E0028C6E4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */; };
+		A51EA02C227D0882009D72D5 /* WelcomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51EA02B227D0882009D72D5 /* WelcomeController.swift */; };
+		A51EA04D227D154D009D72D5 /* SF-Pro-Display-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA02E227D1549009D72D5 /* SF-Pro-Display-Regular.otf */; };
+		A51EA04E227D154D009D72D5 /* SF-Pro-Text-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA02F227D1549009D72D5 /* SF-Pro-Text-RegularItalic.otf */; };
+		A51EA04F227D154D009D72D5 /* SF-Pro-Text-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA030227D1549009D72D5 /* SF-Pro-Text-SemiboldItalic.otf */; };
+		A51EA050227D154D009D72D5 /* SF-Pro-Display-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA031227D154A009D72D5 /* SF-Pro-Display-Light.otf */; };
+		A51EA051227D154D009D72D5 /* SF-Pro-Display-UltralightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA032227D154A009D72D5 /* SF-Pro-Display-UltralightItalic.otf */; };
+		A51EA052227D154D009D72D5 /* SF-Pro-Text-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA033227D154A009D72D5 /* SF-Pro-Text-LightItalic.otf */; };
+		A51EA053227D154D009D72D5 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA034227D154A009D72D5 /* SF-Pro-Text-Bold.otf */; };
+		A51EA054227D154D009D72D5 /* SF-Pro-Text-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA035227D154A009D72D5 /* SF-Pro-Text-BoldItalic.otf */; };
+		A51EA055227D154D009D72D5 /* SF-Pro-Display-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA036227D154A009D72D5 /* SF-Pro-Display-Medium.otf */; };
+		A51EA056227D154D009D72D5 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA037227D154A009D72D5 /* SF-Pro-Text-Semibold.otf */; };
+		A51EA057227D154D009D72D5 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA038227D154A009D72D5 /* SF-Pro-Display-LightItalic.otf */; };
+		A51EA058227D154D009D72D5 /* SF-Pro-Display-ThinItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA039227D154A009D72D5 /* SF-Pro-Display-ThinItalic.otf */; };
+		A51EA059227D154D009D72D5 /* SF-Font.dmg in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03A227D154B009D72D5 /* SF-Font.dmg */; };
+		A51EA05A227D154D009D72D5 /* SF-Pro-Text-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03B227D154B009D72D5 /* SF-Pro-Text-Medium.otf */; };
+		A51EA05B227D154D009D72D5 /* SF-Pro-Display-BoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03C227D154B009D72D5 /* SF-Pro-Display-BoldItalic.otf */; };
+		A51EA05C227D154D009D72D5 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03D227D154B009D72D5 /* SF-Pro-Display-Bold.otf */; };
+		A51EA05D227D154D009D72D5 /* SF-Pro-Display-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03E227D154B009D72D5 /* SF-Pro-Display-MediumItalic.otf */; };
+		A51EA05E227D154D009D72D5 /* SF-Pro-Display-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA03F227D154B009D72D5 /* SF-Pro-Display-Heavy.otf */; };
+		A51EA05F227D154D009D72D5 /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA040227D154B009D72D5 /* SF-Pro-Display-Semibold.otf */; };
+		A51EA060227D154D009D72D5 /* SF-Pro-Display-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA041227D154C009D72D5 /* SF-Pro-Display-Black.otf */; };
+		A51EA061227D154D009D72D5 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA042227D154C009D72D5 /* SF-Pro-Display-Ultralight.otf */; };
+		A51EA062227D154D009D72D5 /* SF-Pro-Display-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA043227D154C009D72D5 /* SF-Pro-Display-HeavyItalic.otf */; };
+		A51EA063227D154D009D72D5 /* SF-Pro-Display-SemiboldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA044227D154C009D72D5 /* SF-Pro-Display-SemiboldItalic.otf */; };
+		A51EA064227D154D009D72D5 /* SF-Pro-Text-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA045227D154C009D72D5 /* SF-Pro-Text-Heavy.otf */; };
+		A51EA065227D154D009D72D5 /* SF-Pro-Display-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA046227D154C009D72D5 /* SF-Pro-Display-Thin.otf */; };
+		A51EA066227D154D009D72D5 /* SF-Pro-Text-HeavyItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA047227D154C009D72D5 /* SF-Pro-Text-HeavyItalic.otf */; };
+		A51EA067227D154D009D72D5 /* SF-Pro-Display-BlackItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA048227D154C009D72D5 /* SF-Pro-Display-BlackItalic.otf */; };
+		A51EA068227D154D009D72D5 /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA049227D154C009D72D5 /* SF-Pro-Display-RegularItalic.otf */; };
+		A51EA069227D154D009D72D5 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA04A227D154C009D72D5 /* SF-Pro-Text-Regular.otf */; };
+		A51EA06A227D154D009D72D5 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA04B227D154D009D72D5 /* SF-Pro-Text-Light.otf */; };
+		A51EA06B227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA04C227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf */; };
 		A5243195225A66AB002705CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5243194225A66AB002705CB /* SignUpController.swift */; };
+		A5329ED0227730C200306779 /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5329ECF227730C200306779 /* AppointmentViewController.swift */; };
+		A537EC372268FE160085DC64 /* AppointmentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A537EC362268FE160085DC64 /* AppointmentListController.swift */; };
+		A537EC3D2269002C0085DC64 /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A537EC3B2269002C0085DC64 /* AppointmentCell.swift */; };
+		A537EC3E2269002C0085DC64 /* AppointmentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A537EC3C2269002C0085DC64 /* AppointmentCell.xib */; };
 		A5A48781225E12B4004EAE64 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A48780225E12B4004EAE64 /* Professor.swift */; };
 		A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CBE5BF2265184500F0F954 /* DateRange.swift */; };
 		A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */; };
@@ -45,7 +81,43 @@
 		A50DDF0A2256598C0028C6E4 /* DatePickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerController.swift; sourceTree = "<group>"; };
 		A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGenerator.swift; sourceTree = "<group>"; };
 		A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		A51EA02B227D0882009D72D5 /* WelcomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeController.swift; sourceTree = "<group>"; };
+		A51EA02E227D1549009D72D5 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		A51EA02F227D1549009D72D5 /* SF-Pro-Text-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-RegularItalic.otf"; sourceTree = "<group>"; };
+		A51EA030227D1549009D72D5 /* SF-Pro-Text-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		A51EA031227D154A009D72D5 /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		A51EA032227D154A009D72D5 /* SF-Pro-Display-UltralightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-UltralightItalic.otf"; sourceTree = "<group>"; };
+		A51EA033227D154A009D72D5 /* SF-Pro-Text-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-LightItalic.otf"; sourceTree = "<group>"; };
+		A51EA034227D154A009D72D5 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		A51EA035227D154A009D72D5 /* SF-Pro-Text-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-BoldItalic.otf"; sourceTree = "<group>"; };
+		A51EA036227D154A009D72D5 /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		A51EA037227D154A009D72D5 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
+		A51EA038227D154A009D72D5 /* SF-Pro-Display-LightItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-LightItalic.otf"; sourceTree = "<group>"; };
+		A51EA039227D154A009D72D5 /* SF-Pro-Display-ThinItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-ThinItalic.otf"; sourceTree = "<group>"; };
+		A51EA03A227D154B009D72D5 /* SF-Font.dmg */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Font.dmg"; sourceTree = "<group>"; };
+		A51EA03B227D154B009D72D5 /* SF-Pro-Text-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Medium.otf"; sourceTree = "<group>"; };
+		A51EA03C227D154B009D72D5 /* SF-Pro-Display-BoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BoldItalic.otf"; sourceTree = "<group>"; };
+		A51EA03D227D154B009D72D5 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		A51EA03E227D154B009D72D5 /* SF-Pro-Display-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-MediumItalic.otf"; sourceTree = "<group>"; };
+		A51EA03F227D154B009D72D5 /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		A51EA040227D154B009D72D5 /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		A51EA041227D154C009D72D5 /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		A51EA042227D154C009D72D5 /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		A51EA043227D154C009D72D5 /* SF-Pro-Display-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-HeavyItalic.otf"; sourceTree = "<group>"; };
+		A51EA044227D154C009D72D5 /* SF-Pro-Display-SemiboldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-SemiboldItalic.otf"; sourceTree = "<group>"; };
+		A51EA045227D154C009D72D5 /* SF-Pro-Text-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Heavy.otf"; sourceTree = "<group>"; };
+		A51EA046227D154C009D72D5 /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		A51EA047227D154C009D72D5 /* SF-Pro-Text-HeavyItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-HeavyItalic.otf"; sourceTree = "<group>"; };
+		A51EA048227D154C009D72D5 /* SF-Pro-Display-BlackItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-BlackItalic.otf"; sourceTree = "<group>"; };
+		A51EA049227D154C009D72D5 /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
+		A51EA04A227D154C009D72D5 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		A51EA04B227D154D009D72D5 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
+		A51EA04C227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		A5243194225A66AB002705CB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		A5329ECF227730C200306779 /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
+		A537EC362268FE160085DC64 /* AppointmentListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListController.swift; sourceTree = "<group>"; };
+		A537EC3B2269002C0085DC64 /* AppointmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
+		A537EC3C2269002C0085DC64 /* AppointmentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AppointmentCell.xib; sourceTree = "<group>"; };
 		A5A48780225E12B4004EAE64 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		A5CBE5BF2265184500F0F954 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppointmentController.swift; sourceTree = "<group>"; };
@@ -77,6 +149,7 @@
 			children = (
 				A50DDEF32253C2E30028C6E4 /* Appointments */,
 				A50DDEF22253C2E30028C6E4 /* Products */,
+				A537EC3B2269002C0085DC64 /* AppointmentCell.swift */,
 				BCDECB65ABC506CD6A8028EB /* Pods */,
 				44CE70D15F8235F08750AE3A /* Frameworks */,
 			);
@@ -93,8 +166,9 @@
 		A50DDEF32253C2E30028C6E4 /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
-				A535AF1C225A5F02002F6539 /* Model */,
+				A51EA02D227D1527009D72D5 /* Fonts */,
 				A50DDEF42253C2E30028C6E4 /* AppDelegate.swift */,
+				A535AF1C225A5F02002F6539 /* Model */,
 				A535AF1A225A5EAF002F6539 /* Controllers */,
 				A535AF1B225A5EE2002F6539 /* View */,
 				A50DDEFB2253C2E40028C6E4 /* Assets.xcassets */,
@@ -103,6 +177,44 @@
 				A50DDF122256C06E0028C6E4 /* GoogleService-Info.plist */,
 			);
 			path = Appointments;
+			sourceTree = "<group>";
+		};
+		A51EA02D227D1527009D72D5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A51EA03A227D154B009D72D5 /* SF-Font.dmg */,
+				A51EA041227D154C009D72D5 /* SF-Pro-Display-Black.otf */,
+				A51EA048227D154C009D72D5 /* SF-Pro-Display-BlackItalic.otf */,
+				A51EA03D227D154B009D72D5 /* SF-Pro-Display-Bold.otf */,
+				A51EA03C227D154B009D72D5 /* SF-Pro-Display-BoldItalic.otf */,
+				A51EA03F227D154B009D72D5 /* SF-Pro-Display-Heavy.otf */,
+				A51EA043227D154C009D72D5 /* SF-Pro-Display-HeavyItalic.otf */,
+				A51EA031227D154A009D72D5 /* SF-Pro-Display-Light.otf */,
+				A51EA038227D154A009D72D5 /* SF-Pro-Display-LightItalic.otf */,
+				A51EA036227D154A009D72D5 /* SF-Pro-Display-Medium.otf */,
+				A51EA03E227D154B009D72D5 /* SF-Pro-Display-MediumItalic.otf */,
+				A51EA02E227D1549009D72D5 /* SF-Pro-Display-Regular.otf */,
+				A51EA049227D154C009D72D5 /* SF-Pro-Display-RegularItalic.otf */,
+				A51EA040227D154B009D72D5 /* SF-Pro-Display-Semibold.otf */,
+				A51EA044227D154C009D72D5 /* SF-Pro-Display-SemiboldItalic.otf */,
+				A51EA046227D154C009D72D5 /* SF-Pro-Display-Thin.otf */,
+				A51EA039227D154A009D72D5 /* SF-Pro-Display-ThinItalic.otf */,
+				A51EA042227D154C009D72D5 /* SF-Pro-Display-Ultralight.otf */,
+				A51EA032227D154A009D72D5 /* SF-Pro-Display-UltralightItalic.otf */,
+				A51EA034227D154A009D72D5 /* SF-Pro-Text-Bold.otf */,
+				A51EA035227D154A009D72D5 /* SF-Pro-Text-BoldItalic.otf */,
+				A51EA045227D154C009D72D5 /* SF-Pro-Text-Heavy.otf */,
+				A51EA047227D154C009D72D5 /* SF-Pro-Text-HeavyItalic.otf */,
+				A51EA04B227D154D009D72D5 /* SF-Pro-Text-Light.otf */,
+				A51EA033227D154A009D72D5 /* SF-Pro-Text-LightItalic.otf */,
+				A51EA03B227D154B009D72D5 /* SF-Pro-Text-Medium.otf */,
+				A51EA04C227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf */,
+				A51EA04A227D154C009D72D5 /* SF-Pro-Text-Regular.otf */,
+				A51EA02F227D1549009D72D5 /* SF-Pro-Text-RegularItalic.otf */,
+				A51EA037227D154A009D72D5 /* SF-Pro-Text-Semibold.otf */,
+				A51EA030227D1549009D72D5 /* SF-Pro-Text-SemiboldItalic.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		A535AF1A225A5EAF002F6539 /* Controllers */ = {
@@ -115,6 +227,9 @@
 				A50DDF0E22565D200028C6E4 /* StyleGenerator.swift */,
 				A5243194225A66AB002705CB /* SignUpController.swift */,
 				A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */,
+				A537EC362268FE160085DC64 /* AppointmentListController.swift */,
+				A5329ECF227730C200306779 /* AppointmentViewController.swift */,
+				A51EA02B227D0882009D72D5 /* WelcomeController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -122,6 +237,7 @@
 		A535AF1B225A5EE2002F6539 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				A537EC3A2268FFE00085DC64 /* Table Cells */,
 				A50DDEF82253C2E30028C6E4 /* Main.storyboard */,
 			);
 			path = View;
@@ -137,6 +253,14 @@
 				A5CBE5BF2265184500F0F954 /* DateRange.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		A537EC3A2268FFE00085DC64 /* Table Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A537EC3C2269002C0085DC64 /* AppointmentCell.xib */,
+			);
+			path = "Table Cells";
 			sourceTree = "<group>";
 		};
 		BCDECB65ABC506CD6A8028EB /* Pods */ = {
@@ -160,6 +284,7 @@
 				A50DDEEE2253C2E30028C6E4 /* Frameworks */,
 				A50DDEEF2253C2E30028C6E4 /* Resources */,
 				68A95F4F300B134522804CDB /* [CP] Embed Pods Frameworks */,
+				0836605B5C065E6F4C0FBE29 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -208,16 +333,82 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A51EA063227D154D009D72D5 /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
+				A51EA05F227D154D009D72D5 /* SF-Pro-Display-Semibold.otf in Resources */,
+				A51EA054227D154D009D72D5 /* SF-Pro-Text-BoldItalic.otf in Resources */,
+				A51EA04F227D154D009D72D5 /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
+				A51EA066227D154D009D72D5 /* SF-Pro-Text-HeavyItalic.otf in Resources */,
+				A51EA058227D154D009D72D5 /* SF-Pro-Display-ThinItalic.otf in Resources */,
+				A51EA052227D154D009D72D5 /* SF-Pro-Text-LightItalic.otf in Resources */,
+				A51EA053227D154D009D72D5 /* SF-Pro-Text-Bold.otf in Resources */,
+				A51EA068227D154D009D72D5 /* SF-Pro-Display-RegularItalic.otf in Resources */,
+				A51EA05E227D154D009D72D5 /* SF-Pro-Display-Heavy.otf in Resources */,
+				A51EA060227D154D009D72D5 /* SF-Pro-Display-Black.otf in Resources */,
 				A50DDEFF2253C2E40028C6E4 /* LaunchScreen.storyboard in Resources */,
+				A51EA05D227D154D009D72D5 /* SF-Pro-Display-MediumItalic.otf in Resources */,
+				A51EA059227D154D009D72D5 /* SF-Font.dmg in Resources */,
 				A50DDF132256C06E0028C6E4 /* GoogleService-Info.plist in Resources */,
+				A51EA055227D154D009D72D5 /* SF-Pro-Display-Medium.otf in Resources */,
+				A51EA067227D154D009D72D5 /* SF-Pro-Display-BlackItalic.otf in Resources */,
 				A50DDEFC2253C2E40028C6E4 /* Assets.xcassets in Resources */,
+				A51EA05B227D154D009D72D5 /* SF-Pro-Display-BoldItalic.otf in Resources */,
+				A51EA06A227D154D009D72D5 /* SF-Pro-Text-Light.otf in Resources */,
+				A51EA05C227D154D009D72D5 /* SF-Pro-Display-Bold.otf in Resources */,
+				A51EA050227D154D009D72D5 /* SF-Pro-Display-Light.otf in Resources */,
+				A51EA064227D154D009D72D5 /* SF-Pro-Text-Heavy.otf in Resources */,
 				A50DDEFA2253C2E30028C6E4 /* Main.storyboard in Resources */,
+				A51EA06B227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				A51EA065227D154D009D72D5 /* SF-Pro-Display-Thin.otf in Resources */,
+				A51EA057227D154D009D72D5 /* SF-Pro-Display-LightItalic.otf in Resources */,
+				A51EA04E227D154D009D72D5 /* SF-Pro-Text-RegularItalic.otf in Resources */,
+				A51EA04D227D154D009D72D5 /* SF-Pro-Display-Regular.otf in Resources */,
+				A51EA056227D154D009D72D5 /* SF-Pro-Text-Semibold.otf in Resources */,
+				A537EC3E2269002C0085DC64 /* AppointmentCell.xib in Resources */,
+				A51EA05A227D154D009D72D5 /* SF-Pro-Text-Medium.otf in Resources */,
+				A51EA069227D154D009D72D5 /* SF-Pro-Text-Regular.otf in Resources */,
+				A51EA051227D154D009D72D5 /* SF-Pro-Display-UltralightItalic.otf in Resources */,
+				A51EA062227D154D009D72D5 /* SF-Pro-Display-HeavyItalic.otf in Resources */,
+				A51EA061227D154D009D72D5 /* SF-Pro-Display-Ultralight.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0836605B5C065E6F4C0FBE29 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Appointments/Pods-Appointments-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAnonymousAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseEmailAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseFacebookAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseGoogleAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebasePhoneAuthUI.bundle",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseTwitterAuthUI.bundle",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework/TwitterKitResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAnonymousAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseEmailAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseFacebookAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseGoogleAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebasePhoneAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseTwitterAuthUI.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/TwitterKitResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Appointments/Pods-Appointments-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		68A95F4F300B134522804CDB /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -225,14 +416,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Appointments/Pods-Appointments-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
 				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/CalendarKit/CalendarKit.framework",
 				"${BUILT_PRODUCTS_DIR}/DateToolsSwift/DateToolsSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/Neon/Neon.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${PODS_ROOT}/TwitterCore/iOS/TwitterCore.framework",
+				"${PODS_ROOT}/TwitterKit/iOS/TwitterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
 				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -240,14 +438,21 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CalendarKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DateToolsSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Neon.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterCore.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TwitterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -284,18 +489,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A50DDF0722564BAD0028C6E4 /* CalendarKitController.swift in Sources */,
+				A537EC3D2269002C0085DC64 /* AppointmentCell.swift in Sources */,
 				A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */,
 				A5243195225A66AB002705CB /* SignUpController.swift in Sources */,
 				A5F983E62263B313007E0CCF /* Appointment.swift in Sources */,
 				A50AC06622625851003209E3 /* ProfSchedule.swift in Sources */,
+				A51EA02C227D0882009D72D5 /* WelcomeController.swift in Sources */,
 				A50DDF09225657830028C6E4 /* CalendarKitMainController.swift in Sources */,
 				A50DDEF72253C2E30028C6E4 /* ViewController.swift in Sources */,
+				A5329ED0227730C200306779 /* AppointmentViewController.swift in Sources */,
 				A5A48781225E12B4004EAE64 /* Professor.swift in Sources */,
 				A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */,
 				A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */,
 				A50AC068226258EE003209E3 /* Schedule.swift in Sources */,
 				A50DDEF52253C2E30028C6E4 /* AppDelegate.swift in Sources */,
 				A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */,
+				A537EC372268FE160085DC64 /* AppointmentListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

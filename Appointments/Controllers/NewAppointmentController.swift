@@ -8,15 +8,21 @@
 
 import UIKit
 import Firebase
+import CoreGraphics
 
-class NewAppointmentController: UIViewController {
+class NewAppointmentController: UIViewController, UITextViewDelegate {
 
     
     //MARK:- IBOutlets
     
     @IBOutlet weak var durationTextField: UITextField!
     @IBOutlet weak var timeslotTextField: UITextField!
-    @IBOutlet weak var descriptionTextView: UITextView!
+    @IBOutlet weak var descriptionTextView: UITextView! {
+        didSet {
+            descriptionTextView.textColor = UIColor.lightGray
+            descriptionTextView.text = "Description"
+        }
+    }
     
     @IBOutlet weak var bookBarButtonItem: UIBarButtonItem!
     
@@ -40,10 +46,27 @@ class NewAppointmentController: UIViewController {
         createPicker()
         createToolBar()
         
+        
+        descriptionTextView.delegate = self
         formatter.dateFormat = "yyyy-MM-dd"
         formatter.timeZone = TimeZone.ReferenceType.default
         observeQuery(forDate: formatter.string(from: selectedDate))
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        descriptionTextView.resignFirstResponder()
+    }
+    
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if descriptionTextView.isFirstResponder {
+            
+            if descriptionTextView.textColor! == UIColor.lightGray {
+                descriptionTextView.textColor = UIColor.black
+                descriptionTextView.text = ""
+            }
+        }
     }
     
     func createPicker() {
@@ -186,16 +209,21 @@ class NewAppointmentController: UIViewController {
             tempStartDate = tempEndDate
             
         }
-        
-        let timeslot = timeslots[0]
-        guard let startDate = timeslot["startDate"] as? Date,
-            let endDate = timeslot["endDate"] as? Date else { return }
-        
-        formatter.dateStyle = .none
-        formatter.timeStyle = .short
-        formatter.timeZone = TimeZone.ReferenceType.default
-        
-        timeslotTextField.text = "\(formatter.string(from: startDate)) - \(formatter.string(from: endDate))"
+        if timeslots.count > 0 {
+            let timeslot = timeslots[0]
+            guard let startDate = timeslot["startDate"] as? Date,
+                let endDate = timeslot["endDate"] as? Date else { return }
+            
+            formatter.dateStyle = .none
+            formatter.timeStyle = .short
+            formatter.timeZone = TimeZone.ReferenceType.default
+            
+            timeslotTextField.text = "\(formatter.string(from: startDate)) - \(formatter.string(from: endDate))"
+        } else {
+            timeslotTextField.text = "No available timeslots"
+            timeslotTextField.isUserInteractionEnabled = false
+            bookBarButtonItem.isEnabled = false
+        }
         self.picker.reloadAllComponents()
         self.view.layoutIfNeeded()
         
@@ -233,11 +261,75 @@ class NewAppointmentController: UIViewController {
     
     @IBAction func bookButtonPressed(_ sender: Any) {
         
-        let selectedDuration =  Int(durationTextField.text!.split(separator: " ")[0])!
-        let selectedTimeslotString = timeslotTextField.text!
         
-        
-        
+        if descriptionTextView.textColor! != UIColor.lightGray && descriptionTextView.text.count != 0 {
+            
+            
+            let selectedDuration = Int(durationTextField.text!.split(separator: " ")[0])!
+            let selectedTimeslotString = timeslotTextField.text!
+            
+            let description = descriptionTextView.text!
+            
+            var newAppointment = Appointment()
+            
+            
+            let startDateString = selectedTimeslotString.split(separator: "-")[0]
+            
+            var startHour = Int(startDateString.split(separator: ":")[0])!
+            let startMins = Int(startDateString.split(separator: ":")[1].split(separator: " ")[0])!
+            let startPeriod = startDateString.split(separator: ":")[1].split(separator: " ")[1]
+            
+            if  startPeriod == "PM" {
+                startHour += 12
+            }
+            
+            let endDateString = selectedTimeslotString.split(separator: "-")[1]
+            print("endDateString:\(endDateString)..")
+            
+            let trimmedEndDateString = endDateString.trimmingCharacters(in: .whitespaces)
+            var endHour = Int(trimmedEndDateString.split(separator: ":")[0])!
+            let endMins = Int(trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[0])!
+            let endPeriod = trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[1]
+            
+            if  endPeriod == "PM" {
+                endHour += 12
+            }
+            
+            print("Selected Start Hours: \(startHour) and Mins: \(startMins) and period: \(startPeriod)...")
+            print("Selected End Hours: \(endHour) and Mins: \(endMins) and period: \(endPeriod)...")
+            
+            if let startTime = Calendar.current.date(bySettingHour: startHour, minute: startMins, second: 0, of: selectedDate) {
+                newAppointment.startTime = startTime
+            }
+            if let endTime = Calendar.current.date(bySettingHour: endHour, minute: endMins, second: 0, of: selectedDate) {
+                newAppointment.endTime = endTime
+            }
+            
+            if let duration = Int(durationTextField.text!.split(separator: " ")[0]) {
+                newAppointment.duration = duration
+            }
+            
+            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.timeZone = TimeZone.ReferenceType.default
+            
+            newAppointment.description = descriptionTextView.text
+            newAppointment.profId = profId
+            newAppointment.userId = "u123"
+            newAppointment.status = "pending"
+            newAppointment.date = formatter.string(from: selectedDate)
+            var newAppDoc = db.collection("appointments").document()
+            newAppDoc.setData(newAppointment.dictionary) {
+                err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                } else {
+                    print("Document successfully written!")
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
+            
+        }
         
         
         
@@ -297,3 +389,17 @@ extension NewAppointmentController: UIPickerViewDelegate, UIPickerViewDataSource
         }
     }
 }
+
+extension UIColor {
+    convenience init(colorWithHexValue value: Int, alpha:CGFloat = 1.0){
+        self.init(
+            red: CGFloat((value & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((value & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(value & 0x0000FF) / 255.0,
+            alpha: alpha
+        )
+    }
+}
+
+
+

@@ -11,7 +11,7 @@ import Firebase
 
 struct Appointment {
     
-    var id : String = ""
+    //var id : String = ""
     var startTime: Date = Date()
     var endTime : Date = Date()
     var duration : Int = 0
@@ -23,7 +23,7 @@ struct Appointment {
     
     var dictionary : [String: Any] {
         return [
-            "id": id,
+           // "id": id,
             "startTime": startTime,
             "endTime": endTime,
             "duration": duration,
@@ -38,8 +38,8 @@ struct Appointment {
 
 extension Appointment : DocumentSerializable {
     init?(dictionary: [String : Any]) {
-        guard let id = dictionary["id"] as? String,
-            let duration = dictionary["duration"] as? Int,
+       // guard let id = dictionary["id"] as? String,
+        guard let duration = dictionary["duration"] as? Int,
             let description = dictionary["description"] as? String,
             let profId = dictionary["profId"] as? String,
             let userId = dictionary["userId"] as? String,
@@ -81,7 +81,7 @@ extension Appointment : DocumentSerializable {
             endTime = formatter.date(from: endTimeString)!
         }
         
-        self.init(id : id,
+        self.init(//id : id,
                   startTime: startTime,
                   endTime: endTime,
                   duration: duration,
