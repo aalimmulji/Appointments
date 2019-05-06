@@ -53,7 +53,7 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
 
                 ]
     
-//    var data = [[String]]()
+//  var data = [[String]]()
     var colors = [UIColor.blue,
                   UIColor.yellow,
                   UIColor.green,
@@ -80,6 +80,7 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
         navigationController?.navigationBar.isTranslucent = false
         dayView.autoScrollToFirstEvent = true
         
+        //MARK:- Get Professor Schedule from fireStore
         getProfessorSchedule()
         
         //reloadData()
@@ -244,7 +245,6 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
 
                     if isAvailableToday {
 
-                        let timeZone = TimeZone.ReferenceType.default
 
                         if let schedulesForToday = allSchedulesForToday["schedule"] as? [String: Any] {
 

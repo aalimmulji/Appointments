@@ -11,9 +11,15 @@ import Firebase
 
 class AppointmentListController: UIViewController {
 
+    //MARK:- IBOutlets
     
-    //      let db = Firestore.firestore()
-    let appointments = [Appointment]()
+    //MARK:- Global Variables
+    var user = User()
+    let db = Firestore.firestore()
+    var appointments : [Appointment] = []
+    var documents : [DocumentSnapshot] = []
+    private var listerner1: ListenerRegistration?
+    
     
     
     @IBOutlet weak var appointmentListTableView: UITableView!
@@ -28,8 +34,39 @@ class AppointmentListController: UIViewController {
         appointmentListTableView.register(UINib(nibName: "AppointmentCell", bundle: nil), forCellReuseIdentifier: "AppointmentCell")
         appointmentListTableView.rowHeight = 95
         appointmentListTableView.separatorStyle = .singleLine
+        
+        //MARK:- Observe Query: Get Appointment list
+        observeQuery()
     }
     
+
+    func observeQuery() {
+        
+        appointments.removeAll()
+        
+        listerner1 = db.collection("appointments").whereField("userId", isEqualTo: "u123").order(by: "startTime", descending: false).addSnapshotListener({ (snapshot, error) in
+                guard let snapshot = snapshot else {
+                    print("Error fetching snapshot result: \(error)")
+                    return
+                }
+                
+                let models = snapshot.documents.map({ (document) -> Appointment in
+                    
+                    print("Documents.data(): ", document.data())
+                    if let model = Appointment(dictionary: document.data()) {
+                        return model
+                    } else {
+                        print("Unable to initialize \(Appointment.self) with document data \(document.data())")
+                        return Appointment()
+                    }
+                })
+                
+                self.appointments = models
+                print("Appointments: \n", self.appointments)
+                self.documents = snapshot.documents
+            })
+    }
+
 
    
 }
@@ -38,11 +75,13 @@ extension AppointmentListController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return appointments.count
-        return 1
+        return appointments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = appointmentListTableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+        
+        
         return cell
     }
     

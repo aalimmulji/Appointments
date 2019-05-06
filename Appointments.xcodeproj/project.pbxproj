@@ -52,6 +52,9 @@
 		A51EA06A227D154D009D72D5 /* SF-Pro-Text-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA04B227D154D009D72D5 /* SF-Pro-Text-Light.otf */; };
 		A51EA06B227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = A51EA04C227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf */; };
 		A5243195225A66AB002705CB /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5243194225A66AB002705CB /* SignUpController.swift */; };
+		A52FCFEA227D2E9E003F35CB /* ImageUploadController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52FCFE9227D2E9E003F35CB /* ImageUploadController.swift */; };
+		A52FCFEC227D36E0003F35CB /* StepTwoSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52FCFEB227D36E0003F35CB /* StepTwoSignUpController.swift */; };
+		A52FCFEE227E5828003F35CB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A52FCFED227E5828003F35CB /* User.swift */; };
 		A5329ED0227730C200306779 /* AppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5329ECF227730C200306779 /* AppointmentViewController.swift */; };
 		A537EC372268FE160085DC64 /* AppointmentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A537EC362268FE160085DC64 /* AppointmentListController.swift */; };
 		A537EC3D2269002C0085DC64 /* AppointmentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A537EC3B2269002C0085DC64 /* AppointmentCell.swift */; };
@@ -114,6 +117,9 @@
 		A51EA04B227D154D009D72D5 /* SF-Pro-Text-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Light.otf"; sourceTree = "<group>"; };
 		A51EA04C227D154D009D72D5 /* SF-Pro-Text-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-MediumItalic.otf"; sourceTree = "<group>"; };
 		A5243194225A66AB002705CB /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
+		A52FCFE9227D2E9E003F35CB /* ImageUploadController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadController.swift; sourceTree = "<group>"; };
+		A52FCFEB227D36E0003F35CB /* StepTwoSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTwoSignUpController.swift; sourceTree = "<group>"; };
+		A52FCFED227E5828003F35CB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A5329ECF227730C200306779 /* AppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentViewController.swift; sourceTree = "<group>"; };
 		A537EC362268FE160085DC64 /* AppointmentListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentListController.swift; sourceTree = "<group>"; };
 		A537EC3B2269002C0085DC64 /* AppointmentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentCell.swift; sourceTree = "<group>"; };
@@ -230,6 +236,8 @@
 				A537EC362268FE160085DC64 /* AppointmentListController.swift */,
 				A5329ECF227730C200306779 /* AppointmentViewController.swift */,
 				A51EA02B227D0882009D72D5 /* WelcomeController.swift */,
+				A52FCFE9227D2E9E003F35CB /* ImageUploadController.swift */,
+				A52FCFEB227D36E0003F35CB /* StepTwoSignUpController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -251,6 +259,7 @@
 				A50AC067226258EE003209E3 /* Schedule.swift */,
 				A5F983E52263B313007E0CCF /* Appointment.swift */,
 				A5CBE5BF2265184500F0F954 /* DateRange.swift */,
+				A52FCFED227E5828003F35CB /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -490,11 +499,13 @@
 			files = (
 				A50DDF0722564BAD0028C6E4 /* CalendarKitController.swift in Sources */,
 				A537EC3D2269002C0085DC64 /* AppointmentCell.swift in Sources */,
+				A52FCFEA227D2E9E003F35CB /* ImageUploadController.swift in Sources */,
 				A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */,
 				A5243195225A66AB002705CB /* SignUpController.swift in Sources */,
 				A5F983E62263B313007E0CCF /* Appointment.swift in Sources */,
 				A50AC06622625851003209E3 /* ProfSchedule.swift in Sources */,
 				A51EA02C227D0882009D72D5 /* WelcomeController.swift in Sources */,
+				A52FCFEE227E5828003F35CB /* User.swift in Sources */,
 				A50DDF09225657830028C6E4 /* CalendarKitMainController.swift in Sources */,
 				A50DDEF72253C2E30028C6E4 /* ViewController.swift in Sources */,
 				A5329ED0227730C200306779 /* AppointmentViewController.swift in Sources */,
@@ -503,6 +514,7 @@
 				A50DDF0B2256598C0028C6E4 /* DatePickerController.swift in Sources */,
 				A50AC068226258EE003209E3 /* Schedule.swift in Sources */,
 				A50DDEF52253C2E30028C6E4 /* AppDelegate.swift in Sources */,
+				A52FCFEC227D36E0003F35CB /* StepTwoSignUpController.swift in Sources */,
 				A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */,
 				A537EC372268FE160085DC64 /* AppointmentListController.swift in Sources */,
 			);

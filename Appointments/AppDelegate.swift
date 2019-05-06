@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let navigationController = UINavigationController(rootViewController: dayViewController)
 //        window?.rootViewController = navigationController
         FirebaseApp.configure()
+        
+        
+        
         return true
     }
 

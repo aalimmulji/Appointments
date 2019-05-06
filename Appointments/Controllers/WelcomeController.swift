@@ -12,18 +12,62 @@ import FirebaseUI
 
 class WelcomeController: UIViewController, FUIAuthDelegate {
     
+    //MARK:- IBOutlets
+    @IBOutlet weak var homeIconImageView: UIImageView!
+    
+    
+    //MARK:- Global Variables
+    var user = User()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let authUI = FUIAuth.defaultAuthUI()!
         
-        authUI.delegate = self
-        let providers : [FUIAuthProvider] = [
-            FUIGoogleAuth()
-        ]
-        authUI.providers = providers
+        if Auth.auth().currentUser != nil {
+            print("current user is signed In")
+            
+            
+            
+            
+        } else {
+            
+            authUI.delegate = self
+            let providers : [FUIAuthProvider] = [
+                FUIGoogleAuth()
+            ]
+            authUI.providers = providers
+            
+            let authViewController = authUI.authViewController()
+            authViewController.isNavigationBarHidden = true
+            
+            authViewController.navigationBar.topItem?.title = "Welcome to Appointments"
+            authViewController.navigationBar.barTintColor = UIColor(colorWithHexValue: 0x3F77D4)
+            authViewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 17), NSAttributedString.Key.foregroundColor: UIColor.white]
+            authViewController.navigationBar.tintColor = UIColor.black
+            
+            let instanceOfAuthVC = authViewController.viewControllers.first as! UIViewController
+            
+            
+            let appImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 235, height: 235))
+            appImage.image = UIImage(named: "home_icon")
+            appImage.contentMode = .scaleAspectFit
+            appImage.translatesAutoresizingMaskIntoConstraints = false
+            
+            instanceOfAuthVC.view.addSubview(appImage)
+            
+            appImage.centerXAnchor.constraint(equalTo: instanceOfAuthVC.view.centerXAnchor).isActive = true
+            appImage.centerYAnchor.constraint(equalTo: instanceOfAuthVC.view.centerYAnchor).isActive = true
+            
+            
+            
+            self.present(authViewController, animated: true, completion: nil)
+            
+        }
         
-        let authViewController = authUI.authViewController()
+        //MARK:- HIde Navigation bar
+        navigationController?.isNavigationBarHidden = true
+        UIApplication.shared.statusBarStyle = .default
         
     }
     
@@ -37,48 +81,73 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
     }
     
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
-        print(authDataResult?.additionalUserInfo?.profile)
+        
+        if let profileDictionary = authDataResult?.additionalUserInfo?.profile {
+            print(profileDictionary)
+            if let firstName = profileDictionary["given_name"] as? String {
+                user.firstName = firstName
+            }
+            if let lastName = profileDictionary["family_name"] as? String {
+                user.lastName = lastName
+            }
+            if let email = profileDictionary["email"] as? String {
+                user.email = email
+                performSegue(withIdentifier: "goToStepTwoSignUpPage", sender: self)
+            } else {
+                let alert = UIAlertController(title: "Email error", message: "Seems to be some problem with your email. Please contact your university", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         
     }
     
     //MARK:- SignUp Button IBAction
 
     @IBAction func signUpButtonPressed(_ sender: Any) {
-        
+        //performSegue(withIdentifier: "goToStepTwoSignUpPage", sender: self)
+//        let stepTwoSignUp = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "StepTwoSignUpController") as? StepTwoSignUpController
+//        self.navigationController?.pushViewController(stepTwoSignUp!, animated: true)
         let authUI = FUIAuth.defaultAuthUI()!
-        
+
         authUI.delegate = self
         let providers : [FUIAuthProvider] = [
             FUIGoogleAuth()
         ]
         authUI.providers = providers
-        
+
         let authViewController = authUI.authViewController()
-        //let instanceOfAuthVC = self.storyboard!.instantiateViewController(withIdentifier: "authViewController") as! ViewController
-        //authViewController.navigationItem.title = "Welcome to Appointments"
-       //     .titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 17), NSAttributedString.Key.foregroundColor: UIColor.white]
 
         authViewController.navigationBar.topItem?.title = "Welcome to Appointments"
         authViewController.navigationBar.barTintColor = UIColor(colorWithHexValue: 0x3F77D4)
         authViewController.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 17), NSAttributedString.Key.foregroundColor: UIColor.white]
         authViewController.navigationBar.tintColor = UIColor.black
-        
+
         let instanceOfAuthVC = authViewController.viewControllers.first as! UIViewController
         let appImage = UIImageView(frame: CGRect(x: 0, y: 0, width: 235, height: 235))
         appImage.image = UIImage(named: "home_icon")
         appImage.contentMode = .scaleAspectFit
         appImage.translatesAutoresizingMaskIntoConstraints = false
-        
+
         instanceOfAuthVC.view.addSubview(appImage)
-        
+
         appImage.centerXAnchor.constraint(equalTo: instanceOfAuthVC.view.centerXAnchor).isActive = true
         appImage.centerYAnchor.constraint(equalTo: instanceOfAuthVC.view.centerYAnchor).isActive = true
-        
-        
-        
+
+
+
         self.present(authViewController, animated: true, completion: nil)
     }
     
+    
+    //MARK:- Prepare for Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToStepTwoSignUpPage" {
+            if let destinationVC = segue.destination as? StepTwoSignUpController {
+                destinationVC.user = user
+            }
+        }
+    }
 }
 
 

@@ -10,20 +10,8 @@ import UIKit
 
 class AppointmentViewController: UIViewController {
 
-    @IBOutlet weak var acceptAppointmentButton: UIButton! {
-        didSet {
-            acceptAppointmentButton.layer.borderWidth = 1
-            acceptAppointmentButton.layer.borderColor = UIColor(colorWithHexValue: 0x00F900).cgColor
-            acceptAppointmentButton.layer.cornerRadius = 5
-        }
-    }
-    @IBOutlet weak var rejectAppointmentButton: UIButton! {
-        didSet {
-            rejectAppointmentButton.layer.borderWidth = 1
-            rejectAppointmentButton.layer.borderColor = UIColor(colorWithHexValue: 0xFF2600).cgColor
-            rejectAppointmentButton.layer.cornerRadius = 5
-        }
-    }
+    @IBOutlet weak var acceptAppointmentButton: UIButton!
+    @IBOutlet weak var rejectAppointmentButton: UIButton!
     
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var dateOfAppointmentLabel: UILabel!

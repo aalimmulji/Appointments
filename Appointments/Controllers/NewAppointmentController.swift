@@ -26,7 +26,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var bookBarButtonItem: UIBarButtonItem!
     
-    //Global Variables
+    //MARK:- Global Variables
     var durationOptions = ["5 mins", "10 mins", "15 mins", "30 mins", "45 mins", "60 mins"]
     var profId : String = ""
     var db = Firestore.firestore()
