@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import Firebase
 
 class AppointmentViewController: UIViewController {
+    
+    //MARK:- IBOutlets
 
     @IBOutlet weak var acceptAppointmentButton: UIButton!
     @IBOutlet weak var rejectAppointmentButton: UIButton!
@@ -19,15 +22,86 @@ class AppointmentViewController: UIViewController {
     
     @IBOutlet weak var editTimeSlotButton: UIButton!
     
+    @IBOutlet weak var descriptionTextView: UITextView!
     
-    @IBOutlet weak var appoinmentResponseSegmentedControl: UISegmentedControl!
+    //MARK:- Global Variables
     
+    var accpetButtonColor = UIColor(colorWithHexValue: 0x65DBBD)
+    var rejectButtonColor = UIColor(colorWithHexValue: 0x133543)
+    
+    var appointment = Appointment()
+    var dateFormatter = DateFormatter()
+    let db = Firestore.firestore()
+    var documentSnapshot : DocumentSnapshot?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        acceptAppointmentButton.layer.borderColor = accpetButtonColor.cgColor
+        rejectAppointmentButton.layer.borderColor = rejectButtonColor.cgColor
+        
+        if appointment.status == "Accepted" {
+            acceptAppointmentButton.backgroundColor = accpetButtonColor
+            acceptAppointmentButton.setTitleColor(.white, for: .normal)
+        } else if appointment.status == "Rejected" {
+            rejectAppointmentButton.backgroundColor = rejectButtonColor
+            rejectAppointmentButton.setTitleColor(.white, for: .normal  )
+        }
+        
+        dateFormatter.dateStyle = .long
+        dateFormatter.timeStyle = .none
+        dateFormatter.timeZone = TimeZone.ReferenceType.default
+        
+        studentNameLabel.text = appointment.profName
+        dateOfAppointmentLabel.text = dateFormatter.string(from: appointment.startTime)
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        timeSlotOfAppointmentLabel.text = "\(dateFormatter.string(from: appointment.startTime)) - \(dateFormatter.string(from: appointment.endTime))"
+        descriptionTextView.text = appointment.description
         
         
+        
+    }
+    
+    @IBAction func acceptButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.1) {
+            self.acceptAppointmentButton.backgroundColor = self.accpetButtonColor
+            self.acceptAppointmentButton.setTitleColor(.white, for: .normal)
+            self.rejectAppointmentButton.backgroundColor = UIColor.white
+            self.rejectAppointmentButton.setTitleColor(self.rejectButtonColor, for: .normal)
+        }
+        
+        let documentRef = db.collection("appointments").document(documentSnapshot!.documentID)
+        documentRef.updateData([
+            "status": "Accepted"
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
+        
+    }
+    
+    @IBAction func rejectButtonPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.1) {
+            self.acceptAppointmentButton.backgroundColor = UIColor.white
+            self.acceptAppointmentButton.setTitleColor(self.accpetButtonColor, for: .normal)
+            self.rejectAppointmentButton.backgroundColor = self.rejectButtonColor
+            self.rejectAppointmentButton.setTitleColor(.white, for: .normal)
+        }
+        
+        let documentRef = db.collection("appointments").document(documentSnapshot!.documentID)
+        documentRef.updateData([
+            "status": "Rejected"
+        ]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
     
 }

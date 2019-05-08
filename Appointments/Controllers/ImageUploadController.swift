@@ -17,7 +17,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
     
     //MARK:- Global Variables
     let storage = Storage.storage()
-    var user = User()
+    var student = Student()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToHomePage" {
             if let destinationVC = segue.destination as? AppointmentListController {
-                destinationVC.user = user
+                destinationVC.student = student
             }
         }
      }

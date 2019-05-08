@@ -17,21 +17,21 @@ class StepTwoSignUpController: UIViewController {
     
     //MARK:- Global Variables
     
-    var user = User()
+    var student = Student()
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     @IBAction func nextButtonPressed(_ sender: Any) {
         if let studentId = studentIdTextField.text {
-            user.studentId = studentId
+            student.studentId = studentId
         }
         if let degreeLevel = degreeLevelTextField.text {
-            user.degreeLevel = degreeLevel
+            student.degreeLevel = degreeLevel
         }
         if let major = majorTextField.text {
-            user.major = major
+            student.major = major
         }
-        user.username = String(user.email.split(separator: "@")[0])
+        student.username = String(student.emailId.split(separator: "@")[0])
         performSegue(withIdentifier: "goToImageUploadPage", sender: self)
     }
     
@@ -39,7 +39,7 @@ class StepTwoSignUpController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToImageUploadPage" {
             if let destinationVC = segue.destination as? ImageUploadController {
-                destinationVC.user = user
+                destinationVC.student = student
             }
         }
     }

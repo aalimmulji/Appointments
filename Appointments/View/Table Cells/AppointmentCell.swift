@@ -14,6 +14,7 @@ class AppointmentCell: UITableViewCell {
     @IBOutlet weak var professorNameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var profPictureImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

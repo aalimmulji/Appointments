@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct User {
+struct Student {
     
     var firstName : String = ""
     var lastName : String = ""
-    var email : String = ""
+    var emailId : String = ""
     var username : String = ""
     var major: String = ""
     var degreeLevel : String = ""
@@ -23,7 +23,7 @@ struct User {
         return [
             "firstName": firstName,
             "lastName": lastName,
-            "email": email,
+            "emailId": emailId,
             "username" : username,
             "major": major,
             "degreeLevel": degreeLevel,
@@ -33,11 +33,11 @@ struct User {
     }
 }
 
-extension User : DocumentSerializable {
+extension Student : DocumentSerializable {
     init?(dictionary: [String : Any]) {
         guard let firstName = dictionary["firstName"] as? String,
             let lastName = dictionary["lastName"] as? String,
-            let email = dictionary["email"] as? String,
+            let emailId = dictionary["emailId"] as? String,
             let username = dictionary["username"] as? String,
             let major = dictionary["major"] as? String,
             let degreeLevel = dictionary["degreeLevel"] as? String,
@@ -46,7 +46,7 @@ extension User : DocumentSerializable {
         
         self.init(firstName: firstName,
                   lastName: lastName,
-                  email: email,
+                  emailId: emailId,
                   username: username,
                   major: major,
                   degreeLevel: degreeLevel,

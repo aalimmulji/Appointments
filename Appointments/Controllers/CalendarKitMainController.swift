@@ -75,13 +75,14 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dark", style: .done, target: self, action: #selector(CalendarKitMainController.changeStyle))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "ChangeDate", style: .plain, target: self, action: #selector(CalendarKitMainController.presentDatePicker))
+        //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "ChangeDate", style: .plain, target: self, action: #selector(CalendarKitMainController.presentDatePicker))
         
         navigationController?.navigationBar.isTranslucent = false
         dayView.autoScrollToFirstEvent = true
         
         //MARK:- Get Professor Schedule from fireStore
-        getProfessorSchedule()
+       // getProfessorSchedule()
+        addProfScheduleToModel(professor: professor)
         
         //reloadData()
     }
@@ -133,6 +134,7 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
         }
         
         print("Professor Schedule: \n", profSchedules)
+        self.reloadData()
         
     }
     

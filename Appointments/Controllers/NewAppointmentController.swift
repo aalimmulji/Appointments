@@ -314,7 +314,8 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             
             newAppointment.description = descriptionTextView.text
             newAppointment.profId = profId
-            newAppointment.userId = "u123"
+            //newAppointment.profName =
+            newAppointment.studentUsername = "u123"
             newAppointment.status = "pending"
             newAppointment.date = formatter.string(from: selectedDate)
             var newAppDoc = db.collection("appointments").document()

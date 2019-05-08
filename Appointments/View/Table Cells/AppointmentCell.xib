@@ -13,42 +13,42 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="95" id="KGk-i7-Jjw" customClass="AppointmentCell" customModule="Appointments" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="369" height="95"/>
+            <rect key="frame" x="0.0" y="0.0" width="485" height="95"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="94.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="485" height="94.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30 PM - 11:30 pm" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gOE-0U-3Yt">
-                        <rect key="frame" x="12" y="12" width="201" height="21"/>
+                        <rect key="frame" x="80" y="12" width="201" height="21"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="21" id="Q58-0d-7GZ"/>
-                            <constraint firstAttribute="width" constant="201" id="aIu-Hx-ElK"/>
+                            <constraint firstAttribute="height" constant="21" id="1JA-G8-ksP"/>
+                            <constraint firstAttribute="width" constant="201" id="JdY-pY-ihO"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="aljshdjkashdjasdhjhjdhjsahjdhjashdjhasjdhjashdjahsdjhasjhdjashdjhasjdhasjdhjashdjashdjahdjahjdhasjdhjashdjashdjashd" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxJ-V3-TLo">
-                        <rect key="frame" x="12" y="65" width="345" height="18"/>
+                        <rect key="frame" x="80" y="65" width="393" height="18"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="p4Q-hM-HAH"/>
+                            <constraint firstAttribute="height" constant="18" id="IUn-FL-ZjT"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Prof. Ausif Mahmood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C9C-7G-8KZ">
-                        <rect key="frame" x="12" y="38" width="318" height="22"/>
+                        <rect key="frame" x="80" y="38" width="366" height="22"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="22" id="Me7-6k-ZTY"/>
+                            <constraint firstAttribute="height" constant="22" id="ZLt-cM-mKx"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pending" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fb4-Nf-ilw">
-                        <rect key="frame" x="213" y="12" width="144" height="14"/>
+                        <rect key="frame" x="433" y="12" width="40" height="14"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="ad0-tf-KvC"/>
                         </constraints>
@@ -57,40 +57,62 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="734-fM-IEg">
-                        <rect key="frame" x="342" y="40" width="15" height="15"/>
+                        <rect key="frame" x="458" y="40" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="02I-0d-Glf"/>
                             <constraint firstAttribute="width" constant="15" id="eBU-ZV-iXz"/>
                         </constraints>
                     </imageView>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldg-hd-3yk" customClass="DesignableView" customModule="Appointments" customModuleProvider="target">
+                        <rect key="frame" x="12" y="17.5" width="60" height="60"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile_icon" translatesAutoresizingMaskIntoConstraints="NO" id="jKI-vj-ZtR">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="Al6-UW-a41"/>
+                            <constraint firstAttribute="width" constant="60" id="Ne1-sR-Fir"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="30"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Fb4-Nf-ilw" firstAttribute="leading" secondItem="gOE-0U-3Yt" secondAttribute="trailing" id="A4n-uF-Iog"/>
-                    <constraint firstItem="uxJ-V3-TLo" firstAttribute="top" secondItem="C9C-7G-8KZ" secondAttribute="bottom" constant="5" id="AXj-la-V1w"/>
-                    <constraint firstItem="gOE-0U-3Yt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="E18-0B-Qgd"/>
-                    <constraint firstAttribute="trailing" secondItem="uxJ-V3-TLo" secondAttribute="trailing" constant="12" id="Hen-J1-Lnu"/>
+                    <constraint firstItem="gOE-0U-3Yt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="6S0-6d-QMZ"/>
+                    <constraint firstItem="C9C-7G-8KZ" firstAttribute="leading" secondItem="Ldg-hd-3yk" secondAttribute="trailing" constant="8" id="E0W-yS-kOW"/>
                     <constraint firstItem="734-fM-IEg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="I4I-cj-aav"/>
-                    <constraint firstItem="uxJ-V3-TLo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="Lup-g1-H1E"/>
-                    <constraint firstItem="734-fM-IEg" firstAttribute="leading" secondItem="C9C-7G-8KZ" secondAttribute="trailing" constant="12" id="S1X-Dx-jtZ"/>
-                    <constraint firstItem="gOE-0U-3Yt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="UyK-mL-Qxd"/>
-                    <constraint firstItem="C9C-7G-8KZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="ZI6-uc-niD"/>
+                    <constraint firstItem="gOE-0U-3Yt" firstAttribute="leading" secondItem="Ldg-hd-3yk" secondAttribute="trailing" constant="8" id="UN7-u2-3Mz"/>
+                    <constraint firstItem="Ldg-hd-3yk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="WCB-MO-bkc"/>
                     <constraint firstAttribute="trailing" secondItem="734-fM-IEg" secondAttribute="trailing" constant="12" id="c2P-42-aGo"/>
+                    <constraint firstItem="Ldg-hd-3yk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="c6G-rU-xRK"/>
+                    <constraint firstAttribute="trailing" secondItem="uxJ-V3-TLo" secondAttribute="trailing" constant="12" id="hjn-m4-vwf"/>
                     <constraint firstAttribute="trailing" secondItem="Fb4-Nf-ilw" secondAttribute="trailing" constant="12" id="jMu-Eu-4Gi"/>
-                    <constraint firstItem="C9C-7G-8KZ" firstAttribute="top" secondItem="gOE-0U-3Yt" secondAttribute="bottom" constant="5" id="xs9-pf-o32"/>
+                    <constraint firstItem="C9C-7G-8KZ" firstAttribute="top" secondItem="gOE-0U-3Yt" secondAttribute="bottom" constant="5" id="nqz-sP-RjS"/>
+                    <constraint firstItem="734-fM-IEg" firstAttribute="leading" secondItem="C9C-7G-8KZ" secondAttribute="trailing" constant="12" id="o98-PO-9cE"/>
+                    <constraint firstItem="uxJ-V3-TLo" firstAttribute="top" secondItem="C9C-7G-8KZ" secondAttribute="bottom" constant="5" id="qo2-TO-u0z"/>
+                    <constraint firstItem="uxJ-V3-TLo" firstAttribute="leading" secondItem="Ldg-hd-3yk" secondAttribute="trailing" constant="8" id="sPE-5Y-GRr"/>
                     <constraint firstItem="Fb4-Nf-ilw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="yuC-KJ-sh5"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="descriptionLabel" destination="uxJ-V3-TLo" id="rpN-hy-APv"/>
+                <outlet property="profPictureImageView" destination="jKI-vj-ZtR" id="qce-Y2-S1u"/>
                 <outlet property="professorNameLabel" destination="C9C-7G-8KZ" id="ydj-8x-XPQ"/>
                 <outlet property="statusLabel" destination="Fb4-Nf-ilw" id="66g-4Z-08Z"/>
                 <outlet property="timeslotLabel" destination="gOE-0U-3Yt" id="LKZ-BE-dwX"/>
             </connections>
-            <point key="canvasLocation" x="92" y="71.514242878560722"/>
+            <point key="canvasLocation" x="184.80000000000001" y="71.514242878560722"/>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="profile_icon" width="128" height="128"/>
         <image name="right_arrow" width="122" height="122"/>
     </resources>
 </document>
