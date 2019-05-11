@@ -28,7 +28,10 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
     
     //MARK:- Global Variables
     var durationOptions = ["5 mins", "10 mins", "15 mins", "30 mins", "45 mins", "60 mins"]
-    var profId : String = ""
+    var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
+    var professor = Professor()
     var db = Firestore.firestore()
     private var listerner1: ListenerRegistration?, listerner2: ListenerRegistration?
     var appointments : [Appointment] = []
@@ -233,7 +236,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
         
         appointments.removeAll()
         
-        listerner1 = db.collection("appointments").whereField("profId", isEqualTo: profId)
+        listerner1 = db.collection("appointments").whereField("profId", isEqualTo: professor.profId)
             .whereField("date", isEqualTo: date).addSnapshotListener({ (snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("Error fetching snapshot result: \(error)")
@@ -311,11 +314,11 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             
             formatter.dateFormat = "yyyy-MM-dd"
             formatter.timeZone = TimeZone.ReferenceType.default
-            
             newAppointment.description = descriptionTextView.text
-            newAppointment.profId = profId
-            //newAppointment.profName =
-            newAppointment.studentUsername = "u123"
+            newAppointment.profId = professor.profId
+            newAppointment.profName = "\(professor.firstName) \(professor.lastName)"
+            newAppointment.studentUsername = student.username
+            newAppointment.studentName = "\(student.firstName) \(student.lastName)"
             newAppointment.status = "pending"
             newAppointment.date = formatter.string(from: selectedDate)
             var newAppDoc = db.collection("appointments").document()
@@ -325,19 +328,17 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
                     print("Error writing document: \(err)")
                 } else {
                     print("Document successfully written!")
-                    self.navigationController?.popViewController(animated: true)
+                    let sender = PushNotificationSender()
+                    sender.sendPushNotification(to: self.professor.fcmToken, title: "Notification title", body: "Notification body")
+                    //self.navigationController?.popViewController(animated: true)
                 }
             }
         } else {
-            
+            let alert = UIAlertController(title: "Description can't be empty", message: "", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))   
+            self.present(alert, animated: true, completion: nil)
         }
-        
-        
-        
     }
-    
-    
-    
 }
 
 

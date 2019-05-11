@@ -21,6 +21,8 @@ class ProfessorListController: UIViewController {
     var professors: [Professor] = []
     var documents : [DocumentSnapshot] = []
     var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
     
     
     override func viewDidLoad() {
@@ -74,7 +76,7 @@ class ProfessorListController: UIViewController {
             }
             if let destinationVC = segue.destination as? CalendarKitMainController {
                 destinationVC.professor = professors[indexPath.row]
-                //destinationVC.student = student
+                destinationVC.student = student
             }
         }
     }

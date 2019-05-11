@@ -63,6 +63,9 @@
 		A592A38D2283271800068479 /* ProfessorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592A38B2283271800068479 /* ProfessorCell.swift */; };
 		A592A38E2283271800068479 /* ProfessorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A592A38C2283271800068479 /* ProfessorCell.xib */; };
 		A592A39022833AFD00068479 /* SideBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A592A38F22833AFD00068479 /* SideBarView.swift */; };
+		A593F7F42285FBD100FE8CE1 /* ProfessorSignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593F7F32285FBD100FE8CE1 /* ProfessorSignUpController.swift */; };
+		A593F7F822860B6700FE8CE1 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593F7F722860B6700FE8CE1 /* PushNotificationManager.swift */; };
+		A593F7FA228634E000FE8CE1 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593F7F9228634E000FE8CE1 /* PushNotificationSender.swift */; };
 		A5A48781225E12B4004EAE64 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A48780225E12B4004EAE64 /* Professor.swift */; };
 		A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CBE5BF2265184500F0F954 /* DateRange.swift */; };
 		A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */; };
@@ -132,8 +135,12 @@
 		A592A38B2283271800068479 /* ProfessorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorCell.swift; sourceTree = "<group>"; };
 		A592A38C2283271800068479 /* ProfessorCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfessorCell.xib; sourceTree = "<group>"; };
 		A592A38F22833AFD00068479 /* SideBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideBarView.swift; sourceTree = "<group>"; };
+		A593F7F32285FBD100FE8CE1 /* ProfessorSignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessorSignUpController.swift; sourceTree = "<group>"; };
+		A593F7F722860B6700FE8CE1 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
+		A593F7F9228634E000FE8CE1 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		A5A48780225E12B4004EAE64 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
 		A5CBE5BF2265184500F0F954 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
+		A5ECAEBB2284FACB0032811A /* Appointments.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Appointments.entitlements; sourceTree = "<group>"; };
 		A5F983E32263AD2D007E0CCF /* NewAppointmentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAppointmentController.swift; sourceTree = "<group>"; };
 		A5F983E52263B313007E0CCF /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +186,7 @@
 		A50DDEF32253C2E30028C6E4 /* Appointments */ = {
 			isa = PBXGroup;
 			children = (
+				A5ECAEBB2284FACB0032811A /* Appointments.entitlements */,
 				A51EA02D227D1527009D72D5 /* Fonts */,
 				A50DDEF42253C2E30028C6E4 /* AppDelegate.swift */,
 				A535AF1C225A5F02002F6539 /* Model */,
@@ -247,6 +255,7 @@
 				A52FCFEB227D36E0003F35CB /* StepTwoSignUpController.swift */,
 				A592A3892283259A00068479 /* ProfessorListController.swift */,
 				A592A38F22833AFD00068479 /* SideBarView.swift */,
+				A593F7F32285FBD100FE8CE1 /* ProfessorSignUpController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +278,8 @@
 				A5F983E52263B313007E0CCF /* Appointment.swift */,
 				A5CBE5BF2265184500F0F954 /* DateRange.swift */,
 				A52FCFED227E5828003F35CB /* Student.swift */,
+				A593F7F722860B6700FE8CE1 /* PushNotificationManager.swift */,
+				A593F7F9228634E000FE8CE1 /* PushNotificationSender.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +339,14 @@
 				TargetAttributes = {
 					A50DDEF02253C2E30028C6E4 = {
 						CreatedOnToolsVersion = 10.1;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -512,12 +531,14 @@
 			files = (
 				A50DDF0722564BAD0028C6E4 /* CalendarKitController.swift in Sources */,
 				A592A39022833AFD00068479 /* SideBarView.swift in Sources */,
+				A593F7F822860B6700FE8CE1 /* PushNotificationManager.swift in Sources */,
 				A537EC3D2269002C0085DC64 /* AppointmentCell.swift in Sources */,
 				A52FCFEA227D2E9E003F35CB /* ImageUploadController.swift in Sources */,
 				A592A38D2283271800068479 /* ProfessorCell.swift in Sources */,
 				A50DDF0F22565D200028C6E4 /* StyleGenerator.swift in Sources */,
 				A5243195225A66AB002705CB /* SignUpController.swift in Sources */,
 				A5F983E62263B313007E0CCF /* Appointment.swift in Sources */,
+				A593F7FA228634E000FE8CE1 /* PushNotificationSender.swift in Sources */,
 				A50AC06622625851003209E3 /* ProfSchedule.swift in Sources */,
 				A51EA02C227D0882009D72D5 /* WelcomeController.swift in Sources */,
 				A52FCFEE227E5828003F35CB /* Student.swift in Sources */,
@@ -533,6 +554,7 @@
 				A52FCFEC227D36E0003F35CB /* StepTwoSignUpController.swift in Sources */,
 				A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */,
 				A537EC372268FE160085DC64 /* AppointmentListController.swift in Sources */,
+				A593F7F42285FBD100FE8CE1 /* ProfessorSignUpController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +701,7 @@
 			baseConfigurationReference = 93A4A50FA5C2F3EFDF961F5B /* Pods-Appointments.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Appointments/Appointments.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77MLE67A45;
 				INFOPLIST_FILE = Appointments/Info.plist;
@@ -698,6 +721,7 @@
 			baseConfigurationReference = 6B020C3833ED0EFE767C6397 /* Pods-Appointments.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Appointments/Appointments.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 77MLE67A45;
 				INFOPLIST_FILE = Appointments/Info.plist;

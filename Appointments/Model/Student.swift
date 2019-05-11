@@ -17,6 +17,7 @@ struct Student {
     var major: String = ""
     var degreeLevel : String = ""
     var studentId : String = ""
+    var fcmToken : String = ""
     var profilePictureUrl : String = ""
     
     var dictionary : [String: Any] {
@@ -28,6 +29,7 @@ struct Student {
             "major": major,
             "degreeLevel": degreeLevel,
             "studentId": studentId,
+            "fcmToken" : fcmToken,
             "profilePictureUrl" : profilePictureUrl
         ]
     }
@@ -42,6 +44,7 @@ extension Student : DocumentSerializable {
             let major = dictionary["major"] as? String,
             let degreeLevel = dictionary["degreeLevel"] as? String,
             let studentId = dictionary["studentId"] as? String,
+            let fcmToken = dictionary["fcmToken"] as? String,
             let profilePictureUrl = dictionary["profilePictureUrl"] as? String else { return nil }
         
         self.init(firstName: firstName,
@@ -51,6 +54,7 @@ extension Student : DocumentSerializable {
                   major: major,
                   degreeLevel: degreeLevel,
                   studentId: studentId,
+                  fcmToken: fcmToken,
                   profilePictureUrl: profilePictureUrl)
     }
 }

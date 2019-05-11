@@ -64,6 +64,9 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
     let db = Firestore.firestore()
     var professor = Professor()
     var profSchedules = [ProfSchedule]()
+    var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
     
     var selectedDayScheduleTimeslots = [String]()
     var selectedDate = Date()
@@ -356,9 +359,12 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
         if segue.identifier == "goToNewAppointment" {
             
             if let destinationVC = segue.destination as? NewAppointmentController {
-                destinationVC.profId = professor.profId
+                destinationVC.professor = professor
                 destinationVC.selectedDayScheduleTimeslots = selectedDayScheduleTimeslots
                 destinationVC.selectedDate = selectedDate
+                destinationVC.student = student
+                destinationVC.userProfessor = userProfessor
+                destinationVC.userType = userType
             }
         }
     }

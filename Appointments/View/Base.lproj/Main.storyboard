@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pYh-gR-Gdl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pYh-gR-Gdl">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -62,11 +62,13 @@
                     <navigationItem key="navigationItem" title="Calendar" id="5CA-5h-6G3">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qTe-bv-VKL">
                             <connections>
+                                <action selector="plusButtonPressed:" destination="BYZ-38-t0r" id="KRn-n2-quR"/>
                                 <segue destination="dP5-eA-GVa" kind="show" identifier="goToProfessorList" id="5rk-nc-5H2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="appointmentsListTableView" destination="Xda-zw-EvP" id="DEx-RH-lzT"/>
                         <outlet property="calendar" destination="nSa-Rx-tFw" id="QSw-Jw-6DG"/>
                     </connections>
                 </viewController>
@@ -208,10 +210,10 @@
             </objects>
             <point key="canvasLocation" x="5844" y="-5"/>
         </scene>
-        <!--Welcome Controller-->
+        <!--WelcomeController-->
         <scene sceneID="9KS-gy-OAL">
             <objects>
-                <viewController id="bc3-gs-0xc" customClass="WelcomeController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeController" title="WelcomeController" id="bc3-gs-0xc" customClass="WelcomeController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1dq-Iq-2xz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -355,63 +357,6 @@
             </objects>
             <point key="canvasLocation" x="-1460" y="-801.72413793103453"/>
         </scene>
-        <!--Sign Up Controller-->
-        <scene sceneID="KS4-S6-Zgn">
-            <objects>
-                <viewController id="XPr-x4-2vC" customClass="SignUpController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vs0-ec-UcO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Appointments" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wt4-Jo-CmZ">
-                                <rect key="frame" x="0.0" y="98" width="375" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="26"/>
-                                <color key="textColor" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="777-fU-ZG3">
-                                <rect key="frame" x="16" y="178" width="343" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PIk-3w-sKt">
-                                <rect key="frame" x="16" y="239" width="343" height="53"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEa-YH-uaV" customClass="goToHomePage">
-                                <rect key="frame" x="16" y="312" width="343" height="43"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.17254901959999999" green="0.24313725489999999" blue="0.31372549020000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="saveButtonPressed:" destination="XPr-x4-2vC" eventType="touchUpInside" id="c1U-lf-IlQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="k0g-BV-yKz"/>
-                    </view>
-                    <connections>
-                        <outlet property="passwordTextField" destination="PIk-3w-sKt" id="nmm-bz-GLP"/>
-                        <outlet property="usernameTextField" destination="777-fU-ZG3" id="zFJ-o1-rpl"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Hmc-zA-HFy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2569" y="877"/>
-        </scene>
         <!--Appointments-->
         <scene sceneID="NAM-2b-PCx">
             <objects>
@@ -445,11 +390,13 @@
                             <barButtonItem image="calendar" id="iFT-JP-5ID">
                                 <color key="tintColor" red="0.025075879580000002" green="0.071115665499999994" blue="0.34758644919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <connections>
+                                    <action selector="calendarButtonPressed:" destination="oMf-wU-HEh" id="UUk-Ym-nxR"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="goToCalendar" id="eiS-MD-OHx"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem systemItem="add" id="PKl-mr-15G">
                                 <connections>
+                                    <action selector="plusButtonPressed:" destination="oMf-wU-HEh" id="rvL-SE-xPE"/>
                                     <segue destination="dP5-eA-GVa" kind="show" identifier="goToProfessorList" id="BYZ-KJ-GWh"/>
                                 </connections>
                             </barButtonItem>
@@ -666,10 +613,10 @@
             </objects>
             <point key="canvasLocation" x="-2306" y="-801"/>
         </scene>
-        <!--View Controller-->
+        <!--Professor Sign Up Controller-->
         <scene sceneID="cyk-IB-wNP">
             <objects>
-                <viewController id="cHO-pJ-zpF" sceneMemberID="viewController">
+                <viewController id="cHO-pJ-zpF" customClass="ProfessorSignUpController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="IQW-w2-AjA">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -688,7 +635,7 @@
                                 <rect key="frame" x="132" y="266" width="110" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="20"/>
-                                <state key="normal" title="Log In">
+                                <state key="normal" title="Sign Up">
                                     <color key="titleColor" red="0.025645295160000001" green="0.0680482164" blue="0.3215910494" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -699,6 +646,9 @@
                                         <real key="value" value="10"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="signUpButtonPressed:" destination="cHO-pJ-zpF" eventType="touchUpInside" id="sgX-w2-9Ir"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cfs-Rz-LWE">
                                 <rect key="frame" x="80.666666666666686" y="511" width="214" height="17"/>
@@ -745,10 +695,14 @@
                         <viewLayoutGuide key="safeArea" id="2Yp-41-idD"/>
                     </view>
                     <navigationItem key="navigationItem" id="dfy-Pl-Phv"/>
+                    <connections>
+                        <outlet property="passwordTextField" destination="Err-5x-S7g" id="Ycc-gV-QvV"/>
+                        <outlet property="usernameTextField" destination="JE6-KN-SFg" id="G4T-AT-3Vk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yeP-OA-sKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1460" y="35"/>
+            <point key="canvasLocation" x="-1460" y="7"/>
         </scene>
         <!--StepTwoSignUpController-->
         <scene sceneID="f0R-0N-Vlj">
@@ -768,28 +722,6 @@
                                 <fontDescription key="fontDescription" name="MarkerFelt-Thin" family="Marker Felt" pointSize="26"/>
                                 <state key="normal" title="&lt;"/>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="myQ-Jq-Dp2">
-                                <rect key="frame" x="80.666666666666686" y="511" width="214" height="17"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New to Appointments?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3xF-GX-Jz1">
-                                        <rect key="frame" x="0.0" y="0.0" width="150" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="14"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PLQ-b1-ec9">
-                                        <rect key="frame" x="151" y="0.0" width="63" height="17"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="14"/>
-                                        <state key="normal" title="Sign Up.">
-                                            <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Student Id" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rhu-Es-0FU">
                                 <rect key="frame" x="16" y="186" width="343" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1043,12 +975,12 @@
     </scenes>
     <resources>
         <image name="calendar" width="29" height="29"/>
-        <image name="hamburger_icon" width="54" height="44"/>
-        <image name="home_icon" width="512" height="512"/>
-        <image name="profile_icon" width="128" height="128"/>
+        <image name="hamburger_icon" width="27" height="22"/>
+        <image name="home_icon" width="256" height="256"/>
+        <image name="profile_icon" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BYZ-KJ-GWh"/>
+        <segue reference="5rk-nc-5H2"/>
         <segue reference="LgQ-B2-Ks3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,10 +11,11 @@ import Firebase
 
 class AppointmentListController: UIViewController {
 
-    //MARK:- IBOutlets
     
     //MARK:- Global Variables
     var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
     let db = Firestore.firestore()
     var appointments : [Appointment] = []
     var documents : [DocumentSnapshot] = []
@@ -30,7 +31,7 @@ class AppointmentListController: UIViewController {
     var menuOpen = false
     
     
-    
+    //MARK:- IBOutlets
     @IBOutlet weak var appointmentListTableView: UITableView!
     
     override func viewDidLoad() {
@@ -45,8 +46,10 @@ class AppointmentListController: UIViewController {
         appointmentListTableView.rowHeight = 95
         appointmentListTableView.separatorStyle = .singleLine
         
+        
         //MARK:- Observe Query: Get Appointment list
         observeQuery()
+        print("Token: ", student.fcmToken)
     }
     
     func createMenuBar() {
@@ -54,10 +57,14 @@ class AppointmentListController: UIViewController {
         
         //Create Menu Bar
         sidebarView = SideBarView(frame: CGRect(x: 0, y: 0, width: 0, height: self.view.frame.height))
-        sidebarView.user = student
+        sidebarView.userType = userType
+        if userType == "Student" {
+            sidebarView.student = student
+        } else {
+            sidebarView.userProfessor = userProfessor
+        }
         sidebarView.delegate = self
         
-        // sidebarView.delegate = self
         self.view.isUserInteractionEnabled=true
         
         sidebarView.layer.zPosition = 100
@@ -89,7 +96,7 @@ class AppointmentListController: UIViewController {
     @objc func blackScreenTapAction(sender: UITapGestureRecognizer){
         
         print("Black Screen tapped:")
-        blackScreen.isHidden = true
+            blackScreen.isHidden = true
         blackScreen.frame = self.view.bounds
         blackScreen.alpha = 1
         UIView.animate(withDuration: 0.3) {
@@ -97,9 +104,15 @@ class AppointmentListController: UIViewController {
             self.blackScreen.alpha = 0
         }
     }
-
     
+    @IBAction func plusButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToProfessorList", sender: self)
+        
+    }
     
+    @IBAction func calendarButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToCalendar", sender: self)
+    }
 
     func observeQuery() {
         
@@ -125,13 +138,28 @@ class AppointmentListController: UIViewController {
                 self.appointments = models
                 print("Appointments: \n", self.appointments)
                 self.documents = snapshot.documents
-            print("Documents: ", self.documents)
+                print("Documents: ", self.documents)
+                self.filterPendingAppointments()
                 self.appointmentListTableView.reloadData()
             })
     }
     
-    //MARK:- Prepare for Segue
+    func filterPendingAppointments() {
+        let today = Date()
+        
+        appointments = appointments.filter({ (Appointment) -> Bool in
+            if Appointment.startTime.compare(today) == .orderedDescending {
+                return true
+            } else {
+                return false
+            }
+        })
+    }
     
+    
+    
+    
+    //MARK:- Prepare for Segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToAppointmentView" {
             guard let indexPath = appointmentListTableView.indexPathForSelectedRow else {
@@ -139,6 +167,23 @@ class AppointmentListController: UIViewController {
             if let destinationVC = segue.destination as? AppointmentViewController {
                 destinationVC.appointment = appointments[indexPath.row]
                 destinationVC.documentSnapshot = documents[indexPath.row]
+            }
+        }
+        if segue.identifier == "goToProfessorList" {
+            if let destinationVC = segue.destination as? ProfessorListController {
+                destinationVC.student = student
+                destinationVC.userProfessor = userProfessor
+                destinationVC.userType = userType
+                
+            }
+        }
+        if segue.identifier == "goToCalendar" {
+            if let destinationVC = segue.destination as? ViewController {
+                destinationVC.student = student
+                destinationVC.appointments = appointments
+                destinationVC.documents = documents
+                destinationVC.userProfessor = userProfessor
+                destinationVC.userType = userType
             }
         }
     }
@@ -176,6 +221,40 @@ extension AppointmentListController: UITableViewDelegate, UITableViewDataSource 
 
 extension AppointmentListController : SidebarViewDelegate {
     func sidebarDidSelectRow(row: Row) {
-        
+        if row == Row(row: 3) {
+            let alert = UIAlertController(title: "Are you Sure?", message: "Select Yes to logout or No to cancel", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in
+                
+                do {
+                    try Auth.auth().signOut()
+                } catch let signOutError as NSError {
+                    print ("Error signing out: %@", signOutError)
+                }
+                UserDefaults.standard.removeObject(forKey: "firstName")
+                UserDefaults.standard.removeObject(forKey: "lastName")
+                UserDefaults.standard.removeObject(forKey: "emailId")
+                if self.userType == "Student" {
+                    UserDefaults.standard.removeObject(forKey: "username")
+                    UserDefaults.standard.removeObject(forKey: "studentId")
+                    UserDefaults.standard.removeObject(forKey: "degree")
+                    UserDefaults.standard.removeObject(forKey: "major")
+                } else {
+                    UserDefaults.standard.removeObject(forKey: "profId")
+                    UserDefaults.standard.removeObject(forKey: "title")
+                    UserDefaults.standard.removeObject(forKey: "dept")
+                   // UserDefaults.standard.removeObject(forKey: "designation")
+                }
+                UserDefaults.standard.removeObject(forKey: "userType")
+                UserDefaults.standard.removeObject(forKey: "fcmToken")
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "WelcomeController")
+                let navVC = UINavigationController(rootViewController: vc)
+                
+                let share = UIApplication.shared.delegate as? AppDelegate
+                share?.window?.rootViewController = navVC
+                share?.window?.makeKeyAndVisible()
+            }))
+            self.present(alert, animated: true, completion: nil)
+        }
     }
 }

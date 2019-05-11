@@ -9,12 +9,25 @@
 import UIKit
 import FSCalendar
 import Firebase
-import FirebaseUI
 
 class ViewController: UIViewController {
 
-    
+    //MARK:- IBOutlets
     @IBOutlet weak var calendar: FSCalendar!
+    @IBOutlet weak var appointmentsListTableView: UITableView!
+    
+    
+    //MARK:- Global Variables
+    var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
+   //let db = Firestore.firestore()
+    var appointments : [Appointment] = []
+    var filteredAppointments : [Appointment] = []
+    var documents : [DocumentSnapshot] = []
+    
+    
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +50,34 @@ class ViewController: UIViewController {
 //        calendar.heightAnchor.constraint(equalToConstant: 250).isActive = true
 //        self.calendar = calendar
         
+        appointmentsListTableView.delegate = self
+        appointmentsListTableView.dataSource = self
+        
+        appointmentsListTableView.register(UINib(nibName: "AppointmentCell", bundle: nil), forCellReuseIdentifier: "AppointmentCell")
+        appointmentsListTableView.rowHeight = 95
+        appointmentsListTableView.separatorStyle = .singleLine
+        
+        filterAppointments(forDate: Date())
+        
     }
-    override func viewWillAppear(_ animated: Bool) {
-       // FirebaseApp.configure()
+    
+    func filterAppointments(forDate date: Date) {
+        filteredAppointments = appointments.filter({ (Appointment) -> Bool in
+            let todayStartDate = date
+            
+            let todayEndDate = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: date)!
+            let appointmentDateString = Appointment.date
+            //            dateFormatter.dateFormat = "yyyy-mm-dd"
+            //            guard let appointmentDate = dateFormatter.date(from: appointmentDateString) else {
+            //                return false }
+            //
+            if Appointment.startTime.compare(todayStartDate) == .orderedDescending && Appointment.startTime.compare(todayEndDate) == .orderedAscending {
+                return true
+            } else {
+                return false
+            }
+        })
+        self.appointmentsListTableView.reloadData()
     }
     
     @IBAction func weekMode(_ sender: Any) {
@@ -56,6 +94,19 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "goToCalendarKit", sender: self)
     }
     
+    @IBAction func plusButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToProfessorList", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToProfessorList" {
+            if let destinationVC = segue.destination as? ProfessorListController {
+                destinationVC.userType = userType
+                destinationVC.student = student
+                destinationVC.userProfessor = userProfessor
+            }
+        }
+    }
 }
 
 extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
@@ -63,5 +114,31 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
             calendar.frame = CGRect(origin: calendar.frame.origin, size: bounds.size)
     }
     
+    func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
+        filterAppointments(forDate: date)
+    }
+}
+
+extension ViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filteredAppointments.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = appointmentsListTableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+        
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.timeZone = TimeZone.ReferenceType.default
+        
+        cell.timeslotLabel.text = "\(dateFormatter.string(from: filteredAppointments[indexPath.row].startTime)) - \(dateFormatter.string(from: filteredAppointments[indexPath.row].endTime))"
+        cell.professorNameLabel.text = filteredAppointments[indexPath.row].profName
+        cell.descriptionLabel.text = filteredAppointments[indexPath.row].description
+        cell.statusLabel.text = filteredAppointments[indexPath.row].status
+        return cell
+        
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }
 

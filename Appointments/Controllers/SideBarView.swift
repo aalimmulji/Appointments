@@ -31,8 +31,9 @@ enum Row: String {
 
 class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
     
-    var user = Student()
-    
+    var student = Student()
+    var userProfessor = Professor()
+    var userType = ""
     var titleArray = [String]()
     
     weak var delegate: SidebarViewDelegate?
@@ -69,7 +70,6 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.backgroundColor = .clear
         cell.selectionStyle = .none
-        
         if indexPath.row == 0 {
             
             //            let crossButton = UIButton(frame: CGRect(x: 20, y: 20, width: 40, height: 40))
@@ -133,31 +133,24 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellImg.image = UIImage(named: "profile_icon")
             cell.addSubview(cellImg)
 
-            let initials = UILabel(frame: CGRect(x: cell.frame.width/2-25, y: 44, width: 50, height: 34))
-            cell.addSubview(initials)
-            var i = ""
-            if user.firstName != "" {
-                i = i + user.firstName.prefix(1)
-            }
-            if user.lastName != "" {
-                i = i + user.lastName.prefix(1)
-            }
-            initials.text = i
-            initials.textAlignment = .center
-            initials.font = UIFont(name: "SFProText-Light", size: 24)
-            initials.textColor = UIColor(colorWithHexValue: 0x2C3E50)
+//            let initials = UILabel(frame: CGRect(x: cell.frame.width/2-25, y: 44, width: 50, height: 34))
+//            cell.addSubview(initials)
+//            var i = ""
+//
+//            if user.firstName != "" {
+//                i = i + user.firstName.prefix(1)
+//            }
+//            if user.lastName != "" {
+//                i = i + user.lastName.prefix(1)
+//            }
+//            initials.text = i
+//            initials.textAlignment = .center
+//            initials.font = UIFont(name: "SFProText-Light", size: 24)
+//            initials.textColor = UIColor(colorWithHexValue: 0x2C3E50)
             
             
             let cellLabel = UILabel(frame: CGRect(x: cell.frame.width/2-125, y: 120, width: 250, height: 30))
             cell.addSubview(cellLabel)
-            var fullName = "\(user.firstName) \(user.lastName)"
-//            if let firstName = user.firstName {
-//                fullName = fullName + firstName
-//            }
-//            if let lastName = user.lastName {
-//                fullName = fullName + " " + lastName
-//            }
-            cellLabel.text = fullName
             cellLabel.textAlignment = .center
             cellLabel.font = UIFont(name: "SFProText-Regular", size: 17)
             cellLabel.textColor = UIColor(colorWithHexValue: 0x2C3E50)
@@ -165,10 +158,18 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
             let cellLabelEmail = UILabel(frame: CGRect(x: cell.frame.width/2-125, y: 160, width: 250, height: 20))
             cell.addSubview(cellLabelEmail)
             
-            cellLabelEmail.text = user.emailId
             cellLabelEmail.textAlignment = .center
             cellLabelEmail.font = UIFont(name: "SFProText-Regular", size: 12)
             cellLabelEmail.textColor = UIColor(colorWithHexValue: 0xECF0F1)
+            
+            if userType == "Student" {
+                cellLabel.text = "\(student.firstName) \(student.lastName)"
+                cellLabelEmail.text = student.emailId
+            } else {
+                cellLabel.text = "\(userProfessor.firstName) \(userProfessor.lastName)"
+                cellLabelEmail.text = userProfessor.emailId
+            }
+            
             
         } else {
             
@@ -178,7 +179,7 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cellLabel.textColor = UIColor(colorWithHexValue: 0x2C3E50)
             cellLabel.font = UIFont.systemFont(ofSize: 17, weight: .regular)
             cellLabel.font = UIFont(name: "SFProText-Regular", size: 17)
-            
+            cell.selectionStyle = .default
         }
         return cell
     }

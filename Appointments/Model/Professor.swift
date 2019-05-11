@@ -18,6 +18,7 @@ struct Professor {
     var title: String = ""
     var dept: String = ""
     var designation: String = ""
+    var fcmToken : String = ""
     var Schedule: Dictionary<String,Any> = [String: Any]()
     
     var dictionary: [String : Any] {
@@ -29,6 +30,7 @@ struct Professor {
             "title": title,
             "dept": dept,
             "designation": designation,
+            "fcmToken" : fcmToken,
             "Schedule": Schedule
         ]
     }
@@ -43,6 +45,7 @@ extension Professor: DocumentSerializable {
             let title = dictionary["title"] as? String,
             let dept = dictionary["dept"] as? String,
             let designation = dictionary["designation"] as? String,
+            let fcmToken = dictionary["fcmToken"] as? String,
             let Schedule = dictionary["Schedule"] as? [String: Any] else { return nil }
         
         self.init(profId: profId,
@@ -52,6 +55,7 @@ extension Professor: DocumentSerializable {
                   title: title,
                   dept: dept,
                   designation: designation,
+                  fcmToken: fcmToken,
                   Schedule: Schedule)
     }
 }

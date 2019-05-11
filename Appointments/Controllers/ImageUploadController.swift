@@ -18,6 +18,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
     //MARK:- Global Variables
     let storage = Storage.storage()
     var student = Student()
+    var userType = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,12 +76,24 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
         picker.dismiss(animated: true, completion: nil)
     }
     
+    //MARK:- Prepare for Segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToHomePage" {
+            if let homeNC = segue.destination as? UINavigationController {
+                if let destinationVC = homeNC.topViewController as? AppointmentListController {
+                    destinationVC.student = student
+                    destinationVC.userType = userType
+                }
+            }
+        }
+    }
+    
     
     @IBAction func saveAndProceedButtonPressed(_ sender: Any) {
         
         let data = profilePictureImageView.image?.jpegData(compressionQuality: 0.2) as! Data
         let storageRef = storage.reference()
-        let profilePictureReference = storageRef.child("user1/username.jpg")
+        let profilePictureReference = storageRef.child("student/\(student.username).jpg")
         
         let uploadTask = profilePictureReference.putData(data, metadata: nil) { (metadata, error) in
             
@@ -102,22 +115,11 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
                 if let error = error {
                     print("Error: ", error)
                 }
-                
-
             })
         }
         
         
     }
-    
-    //MARK:- Prepare for Segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "goToHomePage" {
-            if let destinationVC = segue.destination as? AppointmentListController {
-                destinationVC.student = student
-            }
-        }
-     }
     
     
 
