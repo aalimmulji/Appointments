@@ -222,9 +222,13 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             formatter.timeZone = TimeZone.ReferenceType.default
             
             timeslotTextField.text = "\(formatter.string(from: startDate)) - \(formatter.string(from: endDate))"
+            timeslotTextField.isUserInteractionEnabled = true
+            bookBarButtonItem.tintColor = UIColor(colorWithHexValue: 0x57A6A3)
+            bookBarButtonItem.isEnabled = true
         } else {
             timeslotTextField.text = "No available timeslots"
             timeslotTextField.isUserInteractionEnabled = false
+            bookBarButtonItem.tintColor = UIColor.lightGray
             bookBarButtonItem.isEnabled = false
         }
         self.picker.reloadAllComponents()
@@ -329,7 +333,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
                 } else {
                     print("Document successfully written!")
                     let sender = PushNotificationSender()
-                    sender.sendPushNotification(to: self.professor.fcmToken, title: "Notification title", body: "Notification body")
+                    sender.sendPushNotification(to: self.professor.fcmToken, title: "New Appointment Request", body: "New appointment request from \(self.student.firstName)")
                     //self.navigationController?.popViewController(animated: true)
                 }
             }

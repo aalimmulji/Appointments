@@ -18,9 +18,11 @@ class AppointmentListController: UIViewController {
     var userType = ""
     let db = Firestore.firestore()
     var appointments : [Appointment] = []
+    var pendingAppointments : [Appointment] = []
     var documents : [DocumentSnapshot] = []
     private var listerner1: ListenerRegistration?
     
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     let dateFormatter = DateFormatter()
     
     
@@ -29,6 +31,18 @@ class AppointmentListController: UIViewController {
     var maxBlackViewAlpha: CGFloat = 0.5
     
     var menuOpen = false
+    
+    var pendingStatusBackgroundColor = UIColor(colorWithHexValue: 0x65DBBD)
+    var pendingStatusTextColor = UIColor(colorWithHexValue: 0x0F4352)
+    var pendingStatusColor = UIColor(colorWithHexValue: 0x555555)
+    
+//    var approvedStatusBackgroundColor = UIColor(colorWithHexValue: 0x)
+//    var approvedStatusTextColor = UIColor(colorWithHexValue: 0x)
+//    var approvedStatusColor = UIColor(colorWithHexValue: 0x)
+//    
+//    var rejectedStatusBackgroundColor = UIColor(colorWithHexValue: 0x)
+//    var rejectedStatusTextColor = UIColor(colorWithHexValue: 0x)
+//    var rejectedStatusColor = UIColor(colorWithHexValue: 0x)
     
     
     //MARK:- IBOutlets
@@ -42,10 +56,21 @@ class AppointmentListController: UIViewController {
         appointmentListTableView.delegate = self
         appointmentListTableView.dataSource = self
         
-        appointmentListTableView.register(UINib(nibName: "AppointmentCell", bundle: nil), forCellReuseIdentifier: "AppointmentCell")
-        appointmentListTableView.rowHeight = 95
-        appointmentListTableView.separatorStyle = .singleLine
+        appointmentListTableView.register(UINib(nibName: "AppointmentNewCell", bundle: nil), forCellReuseIdentifier: "AppointmentNewCell")
+        appointmentListTableView.rowHeight = 115
+        appointmentListTableView.separatorStyle = .none
         
+//        navigationController?.navigationBar.layer.shadowColor = UIColor.black.cgColor
+//        navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 1.5)
+//        navigationController?.navigationBar.layer.shadowRadius = 10
+//        navigationController?.navigationBar.layer.shadowOpacity = 0.2
+        
+        topNavigationBar.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        topNavigationBar.backBarButtonItem?.tintColor = UIColor.white
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "SFProText-Regular", size: 17), NSAttributedString.Key.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.isTranslucent = true
+    self.navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         
         //MARK:- Observe Query: Get Appointment list
         observeQuery()
@@ -147,7 +172,7 @@ class AppointmentListController: UIViewController {
     func filterPendingAppointments() {
         let today = Date()
         
-        appointments = appointments.filter({ (Appointment) -> Bool in
+        pendingAppointments = appointments.filter({ (Appointment) -> Bool in
             if Appointment.startTime.compare(today) == .orderedDescending {
                 return true
             } else {
@@ -165,7 +190,8 @@ class AppointmentListController: UIViewController {
             guard let indexPath = appointmentListTableView.indexPathForSelectedRow else {
                 return }
             if let destinationVC = segue.destination as? AppointmentViewController {
-                destinationVC.appointment = appointments[indexPath.row]
+                destinationVC.appointment = pendingAppointments[indexPath.row]
+                destinationVC.userType = userType
                 destinationVC.documentSnapshot = documents[indexPath.row]
             }
         }
@@ -186,6 +212,13 @@ class AppointmentListController: UIViewController {
                 destinationVC.userType = userType
             }
         }
+        if segue.identifier == "goToProfileView" {
+            if let destinationVC = segue.destination as? ProfileController {
+                destinationVC.userType = userType
+                destinationVC.student = student
+                destinationVC.userProfessor = userProfessor
+            }
+        }
     }
 
 
@@ -196,20 +229,40 @@ extension AppointmentListController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return appointments.count
-        return appointments.count
+        return pendingAppointments.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = appointmentListTableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+        let cell = appointmentListTableView.dequeueReusableCell(withIdentifier: "AppointmentNewCell", for: indexPath) as! AppointmentNewCell
     
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
+        
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         dateFormatter.timeZone = TimeZone.ReferenceType.default
         
-        cell.timeslotLabel.text = "\(dateFormatter.string(from: appointments[indexPath.row].startTime)) - \(dateFormatter.string(from: appointments[indexPath.row].endTime))"
-        cell.professorNameLabel.text = appointments[indexPath.row].profName
-        cell.descriptionLabel.text = appointments[indexPath.row].description
-        cell.statusLabel.text = appointments[indexPath.row].status
+        cell.appointmentDateTimeLabel.text = "\(dateFormatter.string(from: pendingAppointments[indexPath.row].startTime))"
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        cell.appointmentDateTimeLabel.text = "\(cell.appointmentDateTimeLabel.text!) at \(dateFormatter.string(from: pendingAppointments[indexPath.row].startTime))"
+        
+        cell.professorNameLabel.text = pendingAppointments[indexPath.row].profName
+        cell.statusLabel.text = pendingAppointments[indexPath.row].status.uppercased()
+        
+        cell.appointmentDateTimeLabel.textColor = pendingStatusTextColor
+        cell.professorNameLabel.textColor = pendingStatusTextColor
+        cell.viewBlock.backgroundColor = pendingStatusBackgroundColor
+        cell.statusLabel.textColor = pendingStatusColor
+        cell.profPictureImageView.image = UIImage(named: "profile_icon")
+        cell.profPictureImageView.contentMode = .scaleAspectFill
+        let profPictureStorageRef = Storage.storage().reference().child("professor/\(pendingAppointments[indexPath.row].profId)")
+        profPictureStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("Error downloading the image: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                cell.profPictureImageView.image = image
+            }
+        }
         return cell
     }
     
@@ -221,7 +274,17 @@ extension AppointmentListController: UITableViewDelegate, UITableViewDataSource 
 
 extension AppointmentListController : SidebarViewDelegate {
     func sidebarDidSelectRow(row: Row) {
-        if row == Row(row: 3) {
+        if row == Row(row: 1) {
+            performSegue(withIdentifier: "goToProfileView", sender: self)
+            blackScreen.isHidden = true
+            blackScreen.frame = self.view.bounds
+            blackScreen.alpha = 1
+            UIView.animate(withDuration: 0.3) {
+                self.sidebarView.frame = CGRect(x: 0, y: 0, width: 0, height: self.sidebarView.frame.height)
+                self.blackScreen.alpha = 0
+            }
+            
+        } else if row == Row(row: 3) {
             let alert = UIAlertController(title: "Are you Sure?", message: "Select Yes to logout or No to cancel", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
             alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (UIAlertAction) in

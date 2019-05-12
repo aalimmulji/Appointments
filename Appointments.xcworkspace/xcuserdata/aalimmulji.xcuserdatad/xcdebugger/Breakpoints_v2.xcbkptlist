@@ -10,13 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Appointments/Controllers/ViewController.swift"
-            timestampString = "579111651.1903141"
+            timestampString = "579392879.461876"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "ViewController"
-            landmarkType = "3">
+            startingLineNumber = "95"
+            endingLineNumber = "95"
+            landmarkName = "filterAppointments(forDate:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Appointments/Controllers/ViewController.swift"
-            timestampString = "579111651.190686"
+            timestampString = "579392879.461957"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "calendar(_:didSelect:at:)"
-            landmarkType = "7">
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "ViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Appointments/Controllers/AppointmentListController.swift"
-            timestampString = "579221173.1020041"
+            timestampString = "579392879.462061"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>

@@ -10,15 +10,17 @@ import UIKit
 
 class ProfileInfoCell: UITableViewCell {
 
+    @IBOutlet weak var profileRowTitleLabel: UILabel!
+    @IBOutlet weak var profileRowValueLabel: UILabel!
+    @IBOutlet weak var rightArrowImageView: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
-        // Configure the view for the selected state
     }
     
 }

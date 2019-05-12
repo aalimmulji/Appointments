@@ -26,7 +26,7 @@ class StepTwoSignUpController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if userType != "Student" {
+        if userType == "Student" {
             studentIdTextField.placeholder = "Student Id"
             degreeLevelTextField.placeholder = "Degree Level"
             majorTextField.placeholder = "Major"
@@ -68,6 +68,7 @@ class StepTwoSignUpController: UIViewController {
                                 print("Error writing document: \(err)")
                             } else {
                                 print("Document successfully written!")
+                               self.performSegue(withIdentifier: "goToImageUploadPage", sender: self)
                             }
                         }
                     }
@@ -101,6 +102,7 @@ class StepTwoSignUpController: UIViewController {
                                 print("Error writing document: \(err)")
                             } else {
                                 print("Document successfully written!")
+                                self.performSegue(withIdentifier: "goToImageUploadPage", sender: self)
                             }
                         }
                     }
@@ -128,7 +130,7 @@ class StepTwoSignUpController: UIViewController {
         UserDefaults.standard.set(userProfessor.profId, forKey: "profId")
         UserDefaults.standard.set(userProfessor.title, forKey: "title")
         UserDefaults.standard.set(userProfessor.dept, forKey: "dept")
-        //UserDefaults.standard.set(userProfessor.designation, forKey: "designation")
+        UserDefaults.standard.set(userProfessor.designation, forKey: "designation")
         //UserDefaults.standard.set(userProfessor.fcmToken, forKey: "fcmToken")
         
     }
@@ -138,6 +140,7 @@ class StepTwoSignUpController: UIViewController {
         if segue.identifier == "goToImageUploadPage" {
             if let destinationVC = segue.destination as? ImageUploadController {
                 destinationVC.student = student
+                destinationVC.userProfessor = userProfessor
                 destinationVC.userType = userType
             }
         }

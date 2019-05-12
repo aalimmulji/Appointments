@@ -15,6 +15,7 @@ class AppointmentViewController: UIViewController {
 
     @IBOutlet weak var acceptAppointmentButton: UIButton!
     @IBOutlet weak var rejectAppointmentButton: UIButton!
+    @IBOutlet weak var statusBarLabel: UILabel!
     
     @IBOutlet weak var studentNameLabel: UILabel!
     @IBOutlet weak var dateOfAppointmentLabel: UILabel!
@@ -29,6 +30,10 @@ class AppointmentViewController: UIViewController {
     var accpetButtonColor = UIColor(colorWithHexValue: 0x65DBBD)
     var rejectButtonColor = UIColor(colorWithHexValue: 0x133543)
     
+    var pendingStatusTextColor = UIColor(colorWithHexValue: 0x0F4352)
+    
+    
+    var userType = ""
     var appointment = Appointment()
     var dateFormatter = DateFormatter()
     let db = Firestore.firestore()
@@ -36,7 +41,15 @@ class AppointmentViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if userType == "Student" {
+            statusBarLabel.isHidden = false
+            statusBarLabel.text = appointment.status.uppercased()
+            statusBarLabel.textColor = pendingStatusTextColor
+            
+        } else {
+            statusBarLabel.isHidden = true
+        }
         acceptAppointmentButton.layer.borderColor = accpetButtonColor.cgColor
         rejectAppointmentButton.layer.borderColor = rejectButtonColor.cgColor
         

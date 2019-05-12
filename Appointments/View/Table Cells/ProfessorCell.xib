@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="height" constant="20" id="SlM-Zm-y6M"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.058823529409999999" green="0.26274509800000001" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9EG-Hr-jDk">
@@ -78,7 +78,7 @@
                                 </constraints>
                                 <string key="text">ASSOCIATE PROFESSOR AT THE DEPARTMENT OF COMPUTER SCIENCE &amp; ENGINEERING ASSOCIATE DEAN FOR INTERNATIONAL INITIATIVES DIRECTOR OF SYSTEMS AND ENGINEERING LABORATORIES</string>
                                 <fontDescription key="fontDescription" name="SFProDisplay-Semibold" family="SF Pro Display" pointSize="12"/>
-                                <color key="textColor" red="0.025075879580000002" green="0.071115665499999994" blue="0.34758644919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.34130093459999999" green="0.65104287859999999" blue="0.63922125100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -116,6 +116,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profile_icon" width="128" height="128"/>
+        <image name="profile_icon" width="64" height="64"/>
     </resources>
 </document>

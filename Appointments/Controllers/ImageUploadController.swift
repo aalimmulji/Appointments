@@ -17,6 +17,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
     
     //MARK:- Global Variables
     let storage = Storage.storage()
+    var userProfessor = Professor()
     var student = Student()
     var userType = ""
     
@@ -65,6 +66,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
         
         if let selectedImage = selectedImageFromPicker {
             profilePictureImageView.image = selectedImage
+            profilePictureImageView.contentMode = .scaleAspectFit
             saveAndProceedButton.isEnabled = true
         }
         
@@ -82,6 +84,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
             if let homeNC = segue.destination as? UINavigationController {
                 if let destinationVC = homeNC.topViewController as? AppointmentListController {
                     destinationVC.student = student
+                    destinationVC.userProfessor = userProfessor
                     destinationVC.userType = userType
                 }
             }
@@ -93,7 +96,10 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
         
         let data = profilePictureImageView.image?.jpegData(compressionQuality: 0.2) as! Data
         let storageRef = storage.reference()
-        let profilePictureReference = storageRef.child("student/\(student.username).jpg")
+        var profilePictureReference = storageRef.child("student/\(student.username).jpg")
+        if userType != "Student" {
+            profilePictureReference = storageRef.child("professor/\(userProfessor.profId).jpg")
+        }
         
         let uploadTask = profilePictureReference.putData(data, metadata: nil) { (metadata, error) in
             

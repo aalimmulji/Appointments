@@ -8,23 +8,34 @@
 
 import UIKit
 
-class updateProfileInfoController: UIViewController {
+protocol UpdateProfileInfoDelegate {
+    func updateProfileInfo(atRow row: Int, withValue value: String)
+}
 
+class updateProfileInfoController: UIViewController {
+    
+    @IBOutlet weak var headerTextLabel: UILabel!
+    @IBOutlet weak var valueTextField: UITextField!
+    
+    
+    var selectedRow = -1
+    var headerText = ""
+    var previousValue = ""
+    
+    var delegate : UpdateProfileInfoDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        headerTextLabel.text = "Update your \(headerText)"
+        valueTextField.placeholder = "Enter your \(headerText)"
+        valueTextField.text = previousValue
+        
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        delegate?.updateProfileInfo(atRow: selectedRow, withValue: valueTextField.text!)
+        self.navigationController?.popViewController(animated: true)
     }
-    */
+    
 
 }

@@ -26,8 +26,22 @@ class ViewController: UIViewController {
     var filteredAppointments : [Appointment] = []
     var documents : [DocumentSnapshot] = []
     
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     
     let dateFormatter = DateFormatter()
+    
+    var pendingStatusBackgroundColor = UIColor(colorWithHexValue: 0x65DBBD)
+    var pendingStatusTextColor = UIColor(colorWithHexValue: 0x0F4352)
+    var pendingStatusColor = UIColor(colorWithHexValue: 0x555555)
+    
+    //    var approvedStatusBackgroundColor = UIColor(colorWithHexValue: 0x)
+    //    var approvedStatusTextColor = UIColor(colorWithHexValue: 0x)
+    //    var approvedStatusColor = UIColor(colorWithHexValue: 0x)
+    //
+    //    var rejectedStatusBackgroundColor = UIColor(colorWithHexValue: 0x)
+    //    var rejectedStatusTextColor = UIColor(colorWithHexValue: 0x)
+    //    var rejectedStatusColor = UIColor(colorWithHexValue: 0x)
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,13 +63,14 @@ class ViewController: UIViewController {
 //        calendar.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 //        calendar.heightAnchor.constraint(equalToConstant: 250).isActive = true
 //        self.calendar = calendar
-        
+        topNavigationBar.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        topNavigationBar.backBarButtonItem?.tintColor = UIColor.white
         appointmentsListTableView.delegate = self
         appointmentsListTableView.dataSource = self
         
-        appointmentsListTableView.register(UINib(nibName: "AppointmentCell", bundle: nil), forCellReuseIdentifier: "AppointmentCell")
-        appointmentsListTableView.rowHeight = 95
-        appointmentsListTableView.separatorStyle = .singleLine
+        appointmentsListTableView.register(UINib(nibName: "AppointmentNewCell", bundle: nil), forCellReuseIdentifier: "AppointmentNewCell")
+        appointmentsListTableView.rowHeight = 115
+        appointmentsListTableView.separatorStyle = .none
         
         filterAppointments(forDate: Date())
         
@@ -106,6 +121,15 @@ class ViewController: UIViewController {
                 destinationVC.userProfessor = userProfessor
             }
         }
+        if segue.identifier == "goToAppointmentView" {
+            guard let indexPath = appointmentsListTableView.indexPathForSelectedRow else {
+                return }
+            if let destinationVC = segue.destination as? AppointmentViewController {
+                destinationVC.appointment = filteredAppointments[indexPath.row]
+                destinationVC.userType = userType
+                destinationVC.documentSnapshot = documents[indexPath.row]
+            }
+        }
     }
 }
 
@@ -117,6 +141,7 @@ extension ViewController: FSCalendarDataSource, FSCalendarDelegate {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
         filterAppointments(forDate: date)
     }
+    
 }
 
 extension ViewController : UITableViewDelegate, UITableViewDataSource {
@@ -124,21 +149,42 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
         return filteredAppointments.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = appointmentsListTableView.dequeueReusableCell(withIdentifier: "AppointmentCell", for: indexPath) as! AppointmentCell
+        let cell = appointmentsListTableView.dequeueReusableCell(withIdentifier: "AppointmentNewCell", for: indexPath) as! AppointmentNewCell
         
-        dateFormatter.dateStyle = .none
-        dateFormatter.timeStyle = .short
+       
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
         dateFormatter.timeZone = TimeZone.ReferenceType.default
         
-        cell.timeslotLabel.text = "\(dateFormatter.string(from: filteredAppointments[indexPath.row].startTime)) - \(dateFormatter.string(from: filteredAppointments[indexPath.row].endTime))"
+        cell.appointmentDateTimeLabel.text = "\(dateFormatter.string(from: filteredAppointments[indexPath.row].startTime))"
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        cell.appointmentDateTimeLabel.text = "\(cell.appointmentDateTimeLabel.text!) at \(dateFormatter.string(from: filteredAppointments[indexPath.row].startTime))"
+        
         cell.professorNameLabel.text = filteredAppointments[indexPath.row].profName
-        cell.descriptionLabel.text = filteredAppointments[indexPath.row].description
-        cell.statusLabel.text = filteredAppointments[indexPath.row].status
+        cell.statusLabel.text = filteredAppointments[indexPath.row].status.uppercased()
+        
+        cell.appointmentDateTimeLabel.textColor = pendingStatusTextColor
+        cell.professorNameLabel.textColor = pendingStatusTextColor
+        cell.viewBlock.backgroundColor = pendingStatusBackgroundColor
+        cell.statusLabel.textColor = pendingStatusColor
+        cell.profPictureImageView.image = UIImage(named: "profile_icon")
+        cell.profPictureImageView.contentMode = .scaleAspectFill
+        let profPictureStorageRef = Storage.storage().reference().child("professor/\(filteredAppointments[indexPath.row].profId)")
+        profPictureStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("Error downloading the image: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                cell.profPictureImageView.image = image
+            }
+        }
         return cell
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "goToAppointmentView", sender: self)
+        appointmentsListTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

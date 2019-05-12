@@ -9,22 +9,41 @@
 import UIKit
 
 class CreateScheduleController: UIViewController {
-
+    
+    
+    @IBOutlet weak var weekDaysTableView: UITableView!
+    
+    var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        weekDaysTableView.delegate = self
+        weekDaysTableView.dataSource = self
+        
+        weekDaysTableView.register(UINib(nibName: "ProfileInfoCell", bundle: nil), forCellReuseIdentifier: "ProfileInfoCell")
+        weekDaysTableView.rowHeight = 45
+        weekDaysTableView.isScrollEnabled = false
+        weekDaysTableView.separatorStyle = .none
+        
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension CreateScheduleController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
     }
-    */
-
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = weekDaysTableView.dequeueReusableCell(withIdentifier: "ProfileInfoCell", for: indexPath) as! ProfileInfoCell
+        cell.profileRowTitleLabel.text = weekDays[indexPath.row]
+        cell.profileRowValueLabel.text = ""
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

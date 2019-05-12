@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 protocol SidebarViewDelegate: class {
     func sidebarDidSelectRow(row: Row)
@@ -127,11 +128,22 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
             
             let cellImg: UIImageView!
             cellImg = UIImageView(frame: CGRect(x: cell.frame.width/2-40, y: 20, width: 80, height: 80))
+            cell.addSubview(cellImg)
             cellImg.layer.cornerRadius = 40
             cellImg.layer.masksToBounds = true
             cellImg.contentMode = .scaleAspectFill
             cellImg.image = UIImage(named: "profile_icon")
-            cell.addSubview(cellImg)
+            if userType == "Student" {
+                let imageStorageRef = Storage.storage().reference().child("student/\(student.username).jpg")
+                imageStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                    if let error = error {
+                        print("Error downloading the image: \(error)")
+                    } else {
+                        let image = UIImage(data: data!)
+                        cellImg.image = image
+                    }
+                }
+            }
 
 //            let initials = UILabel(frame: CGRect(x: cell.frame.width/2-25, y: 44, width: 50, height: 34))
 //            cell.addSubview(initials)

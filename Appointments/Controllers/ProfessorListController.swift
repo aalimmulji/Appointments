@@ -15,6 +15,7 @@ class ProfessorListController: UIViewController {
     
     @IBOutlet weak var professorListTableView: UITableView!
     
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     
     //MARK:- Global variable
     let db = Firestore.firestore()
@@ -28,6 +29,8 @@ class ProfessorListController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        topNavigationBar.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        topNavigationBar.backBarButtonItem?.tintColor = UIColor.white
         professorListTableView.delegate = self
         professorListTableView.dataSource = self
         

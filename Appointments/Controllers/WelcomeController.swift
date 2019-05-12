@@ -75,7 +75,7 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
         UserDefaults.standard.set(userProfessor.profId, forKey: "profId")
         UserDefaults.standard.set(userProfessor.title, forKey: "title")
         UserDefaults.standard.set(userProfessor.dept, forKey: "dept")
-       // UserDefaults.standard.set(userProfessor.designation, forKey: "designation")
+       UserDefaults.standard.set(userProfessor.designation, forKey: "designation")
         //UserDefaults.standard.set(userProfessor.fcmToken, forKey: "fcmToken")
         let pushManager = PushNotificationManager()
         pushManager.updateFirestorePushTokenIfNeeded()
@@ -133,9 +133,9 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
         if let token = UserDefaults.standard.value(forKey: "fcmToken") as? String {
             userProfessor.fcmToken = token
         }
-//        if let designation = UserDefaults.standard.value(forKey: "designation") as? String {
-//            userProfessor.designation = designation
-//        }
+        if let designation = UserDefaults.standard.value(forKey: "designation") as? String {
+            userProfessor.designation = designation
+        }
     }
     
     func isNewStudent() {
@@ -152,7 +152,8 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
                     if let model = Student(dictionary: doc.data()) {
                         self.student = model
                         self.setStudentDataToUserDefaults()
-                        self.performSegue(withIdentifier: "goToHomePage", sender: self)
+                        self.performSegue(withIdentifier: "goToStepTwoSignUpPage", sender: self)
+                        //self.performSegue(withIdentifier: "goToHomePage", sender: self)
                     }  else {
                         print("Unable to initialize \(Student.self) with document data \(doc.data())")
                     }

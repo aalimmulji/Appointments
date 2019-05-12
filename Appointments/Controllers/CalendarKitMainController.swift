@@ -71,16 +71,20 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
     var selectedDayScheduleTimeslots = [String]()
     var selectedDate = Date()
     
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        title = "CalendarKit"
+        title = "New Appointment"
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dark", style: .done, target: self, action: #selector(CalendarKitMainController.changeStyle))
+       // navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Dark", style: .done, target: self, action: #selector(CalendarKitMainController.changeStyle))
         
         //navigationItem.leftBarButtonItem = UIBarButtonItem(title: "ChangeDate", style: .plain, target: self, action: #selector(CalendarKitMainController.presentDatePicker))
         
-        navigationController?.navigationBar.isTranslucent = false
+        topNavigationBar.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+        topNavigationBar.backBarButtonItem?.tintColor = UIColor.white
+        
+        navigationController?.navigationBar.isTranslucent = true
         dayView.autoScrollToFirstEvent = true
         
         //MARK:- Get Professor Schedule from fireStore
@@ -284,8 +288,13 @@ class CalendarKitMainController: DayViewController, DatePickerControllerDelegate
                                     
                                     if let type = scheduleData["type"] as? String {
                                         event.text = "\(event.startDate.format(with: "HH:mm")) - \(event.endDate.format(with: "HH:mm")) - \(type)"
-                                        event.color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
-                                        
+                                        if type == "Office hours" {
+                                            event.color = UIColor(colorWithHexValue: 0x57A6A3)
+                                        } else {
+                                           UIColor(colorWithHexValue: 0x16677F)
+                                        }
+//                                        event.color = colors[Int(arc4random_uniform(UInt32(colors.count)))]
+//                                        
                                     }
                                     
                                 }
