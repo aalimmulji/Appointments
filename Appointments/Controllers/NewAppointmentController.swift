@@ -10,6 +10,17 @@ import UIKit
 import Firebase
 import CoreGraphics
 
+extension UIViewController {
+    func HideKeyboard() {
+        let Tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(DismissKeyboard))
+        view.addGestureRecognizer(Tap)
+    }
+    
+    @objc func DismissKeyboard() {
+        view.endEditing(true)
+    }
+}
+
 class NewAppointmentController: UIViewController, UITextViewDelegate {
 
     
@@ -49,6 +60,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
         createPicker()
         createToolBar()
         
+        self.HideKeyboard()
         
         descriptionTextView.delegate = self
         formatter.dateFormat = "yyyy-MM-dd"
@@ -284,10 +296,12 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             
             var startHour = Int(startDateString.split(separator: ":")[0])!
             let startMins = Int(startDateString.split(separator: ":")[1].split(separator: " ")[0])!
-            let startPeriod = startDateString.split(separator: ":")[1].split(separator: " ")[1]
             
-            if  startPeriod == "PM" && startHour > 12 {
-                startHour += 12
+            if startDateString.split(separator: ":")[1].split(separator: " ").count > 1 {
+                let startPeriod = startDateString.split(separator: ":")[1].split(separator: " ")[1]
+                if startPeriod == "PM" && startHour > 12 {
+                    startHour += 12
+                }
             }
             
             let endDateString = selectedTimeslotString.split(separator: "-")[1]
@@ -296,14 +310,16 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             let trimmedEndDateString = endDateString.trimmingCharacters(in: .whitespaces)
             var endHour = Int(trimmedEndDateString.split(separator: ":")[0])!
             let endMins = Int(trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[0])!
-            let endPeriod = trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[1]
+            if trimmedEndDateString.split(separator: ":")[1].split(separator: " ").count > 1 {
+                let endPeriod = trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[1]
             
-            if  endPeriod == "PM" && startHour > 12  {
-                endHour += 12
+                if  endPeriod == "PM" && startHour > 12  {
+                    endHour += 12
+                }
             }
             
-            print("Selected Start Hours: \(startHour) and Mins: \(startMins) and period: \(startPeriod)...")
-            print("Selected End Hours: \(endHour) and Mins: \(endMins) and period: \(endPeriod)...")
+//            print("Selected Start Hours: \(startHour) and Mins: \(startMins) and period: \(startPeriod)...")
+//            print("Selected End Hours: \(endHour) and Mins: \(endMins) and period: \(endPeriod)...")
             
             if let startTime = Calendar.current.date(bySettingHour: startHour, minute: startMins, second: 0, of: selectedDate) {
                 newAppointment.startTime = startTime
@@ -321,8 +337,13 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             newAppointment.description = descriptionTextView.text
             newAppointment.profId = professor.profId
             newAppointment.profName = "\(professor.firstName) \(professor.lastName)"
-            newAppointment.studentUsername = student.username
-            newAppointment.studentName = "\(student.firstName) \(student.lastName)"
+            if userType == "Student" {
+                newAppointment.studentUsername = student.username
+                newAppointment.studentName = "\(student.firstName) \(student.lastName)"
+            } else {
+                newAppointment.studentUsername = userProfessor.profId
+                newAppointment.studentName = "\(userProfessor.firstName) \(userProfessor.lastName)"
+            }
             newAppointment.status = "pending"
             newAppointment.date = formatter.string(from: selectedDate)
             var newAppDoc = db.collection("appointments").document()

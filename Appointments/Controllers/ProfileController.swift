@@ -62,6 +62,7 @@ class ProfileController: UIViewController, UIImagePickerControllerDelegate, UINa
     }
     
     func displayExistingPicture() {
+        self.profilePictureImageView.contentMode = .center
         if userType == "Student" {
             let imageStorageRef = Storage.storage().reference().child("student/\(student.username).jpg")
             imageStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in

@@ -259,7 +259,8 @@ extension AppointmentListController: UITableViewDelegate, UITableViewDataSource 
         cell.statusLabel.textColor = pendingStatusColor
         cell.profPictureImageView.image = UIImage(named: "profile_icon")
         cell.profPictureImageView.contentMode = .scaleAspectFill
-        let profPictureStorageRef = Storage.storage().reference().child("professor/\(pendingAppointments[indexPath.row].profId)")
+        
+        let profPictureStorageRef = Storage.storage().reference().child("professor/\(pendingAppointments[indexPath.row].profId).jpg")
         profPictureStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
             if let error = error {
                 print("Error downloading the image: \(error)")

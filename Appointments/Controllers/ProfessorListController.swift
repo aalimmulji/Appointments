@@ -80,6 +80,8 @@ class ProfessorListController: UIViewController {
             if let destinationVC = segue.destination as? CalendarKitMainController {
                 destinationVC.professor = professors[indexPath.row]
                 destinationVC.student = student
+                destinationVC.userType = userType
+                destinationVC.userProfessor = userProfessor
             }
         }
     }
@@ -95,6 +97,16 @@ extension ProfessorListController: UITableViewDelegate, UITableViewDataSource {
         let cell = professorListTableView.dequeueReusableCell(withIdentifier: "ProfessorCell", for: indexPath) as! ProfessorCell
         cell.professorNameLabel.text = "\(professors[indexPath.row].firstName) \(professors[indexPath.row].lastName), \(professors[indexPath.row].title)"
         cell.professorDesignationLabel.text = "\(professors[indexPath.row].designation)"
+        
+        let profPictureStorageRef = Storage.storage().reference().child("professor/\(professors[indexPath.row].profId).jpg")
+        profPictureStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+            if let error = error {
+                print("Error downloading the image: \(error)")
+            } else {
+                let image = UIImage(data: data!)
+                cell.pictureImageView.image = image
+            }
+        }
         return cell
     }
     
