@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import SVProgressHUD
 
 class ProfileController: UIViewController {
     
@@ -40,6 +42,7 @@ class ProfileController: UIViewController {
             
             profileRowValues = [userProfessor.firstName, userProfessor.lastName, userProfessor.dept, userProfessor.designation, ""]
             profileDetailsTableHeightContraint.constant = 225
+            fetchScheduleForUserProfessor()
         }
         
         profileDetailsTableView.delegate = self
@@ -51,6 +54,33 @@ class ProfileController: UIViewController {
         profileDetailsTableView.separatorStyle = .none
         
         profileDetailsTableView.reloadData()
+    }
+    
+    func fetchScheduleForUserProfessor() {
+        SVProgressHUD.show()
+        var db = Firestore.firestore()
+        let query = db.collection("Professors").whereField("profId", isEqualTo: userProfessor.profId)
+        
+        query.getDocuments { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshot result: \(error)")
+                return
+            }
+            
+            if snapshot.documents.count > 0 {
+                for doc in snapshot.documents {
+                    
+                    if let model = Professor(dictionary: doc.data()) {
+                        self.userProfessor = model
+                    }  else {
+                        print("Unable to initialize \(Professor.self) with document data \(doc.data())")
+                    }
+                    
+                }
+                SVProgressHUD.dismiss()
+            }
+            
+        }
     }
     
     
@@ -70,6 +100,8 @@ class ProfileController: UIViewController {
             }
         }
     }
+    
+    
     
 }
 

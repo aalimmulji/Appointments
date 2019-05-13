@@ -72,6 +72,7 @@
 		A593F7F822860B6700FE8CE1 /* PushNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593F7F722860B6700FE8CE1 /* PushNotificationManager.swift */; };
 		A593F7FA228634E000FE8CE1 /* PushNotificationSender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A593F7F9228634E000FE8CE1 /* PushNotificationSender.swift */; };
 		A5A48781225E12B4004EAE64 /* Professor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A48780225E12B4004EAE64 /* Professor.swift */; };
+		A5BC50132289342D00566E36 /* NewScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BC50122289342D00566E36 /* NewScheduleController.swift */; };
 		A5CBE5C02265184500F0F954 /* DateRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5CBE5BF2265184500F0F954 /* DateRange.swift */; };
 		A5DF621E228795B400456788 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DF621C228795B400456788 /* ProfileInfoCell.swift */; };
 		A5DF621F228795B400456788 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5DF621D228795B400456788 /* ProfileInfoCell.xib */; };
@@ -152,6 +153,7 @@
 		A593F7F722860B6700FE8CE1 /* PushNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationManager.swift; sourceTree = "<group>"; };
 		A593F7F9228634E000FE8CE1 /* PushNotificationSender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationSender.swift; sourceTree = "<group>"; };
 		A5A48780225E12B4004EAE64 /* Professor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Professor.swift; sourceTree = "<group>"; };
+		A5BC50122289342D00566E36 /* NewScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewScheduleController.swift; sourceTree = "<group>"; };
 		A5CBE5BF2265184500F0F954 /* DateRange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateRange.swift; sourceTree = "<group>"; };
 		A5DF621C228795B400456788 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
 		A5DF621D228795B400456788 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				A51C8329228876DA00917D76 /* updateProfileInfoController.swift */,
 				A51C832B228879DC00917D76 /* CreateScheduleController.swift */,
 				A51C832D228879F500917D76 /* UpdateScheduleController.swift */,
+				A5BC50122289342D00566E36 /* NewScheduleController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				A592A38A2283259A00068479 /* ProfessorListController.swift in Sources */,
 				A51C832A228876DA00917D76 /* updateProfileInfoController.swift in Sources */,
 				A50AC068226258EE003209E3 /* Schedule.swift in Sources */,
+				A5BC50132289342D00566E36 /* NewScheduleController.swift in Sources */,
 				A50DDEF52253C2E30028C6E4 /* AppDelegate.swift in Sources */,
 				A52FCFEC227D36E0003F35CB /* StepTwoSignUpController.swift in Sources */,
 				A5F983E42263AD2D007E0CCF /* NewAppointmentController.swift in Sources */,

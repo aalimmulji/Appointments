@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class CreateScheduleController: UIViewController {
     
@@ -21,7 +22,7 @@ class CreateScheduleController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fetchScheduleForUserProfessor()
+        
         weekDaysTableView.delegate = self
         weekDaysTableView.dataSource = self
         
@@ -32,43 +33,50 @@ class CreateScheduleController: UIViewController {
         
     }
     
-    func fetchScheduleForUserProfessor() {
-        var db = Firestore.firestore()
-        let query = db.collection("Professors").whereField("profId", isEqualTo: userProfessor.profId)
-        
-        query.getDocuments { (querySnapshot, error) in
-            guard let snapshot = querySnapshot else {
-                print("Error fetching snapshot result: \(error)")
-                return
-            }
-            
-            if snapshot.documents.count > 0 {
-                for doc in snapshot.documents {
-                    
-                    if let model = Professor(dictionary: doc.data()) {
-                        self.userProfessor = model
-                    }  else {
-                        print("Unable to initialize \(Professor.self) with document data \(doc.data())")
-                    }
-                    
-                }
-            }
-            
-        }
-        
-        
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "goToUpdateScheduleController" {
             guard let indexPath = weekDaysTableView.indexPathForSelectedRow else {return}
             if let destinationVC = segue.destination as? UpdateScheduleController {
-                destinationVC.scheduleForDay = userProfessor.Schedule[weekDays[indexPath.row]] as! [String: Any]
+                destinationVC.scheduleForDay = userProfessor.Schedule[weekDays[indexPath.row]] as! [String: AnyObject]
+                destinationVC.dayFull = weekDaysTitles[indexPath.row]
+                destinationVC.dayShort = weekDays[indexPath.row]
+                destinationVC.delegate = self
             }
         }
     }
     
-
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        SVProgressHUD.show()
+        var db = Firestore.firestore()
+        let query = db.collection("Professors").whereField("profId", isEqualTo: userProfessor.profId)
+        query.getDocuments { (querySnapshot, error) in
+            
+            if let error = error {
+                print("Error fetching snapshot result: \(error)")
+            }
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshot result: \(error)")
+                return
+            }
+            
+            print(snapshot.documents.count)
+            if snapshot.documents.count > 0 {
+                for doc in snapshot.documents {
+                    doc.reference.setData(self.userProfessor.dictionary) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+    
 }
 
 extension CreateScheduleController : UITableViewDelegate, UITableViewDataSource {
@@ -85,5 +93,11 @@ extension CreateScheduleController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToUpdateScheduleController", sender: self)
+    }
+}
+
+extension CreateScheduleController: updateScheduleForDayDelegate {
+    func updateScheduleForDay(schedule: [String : AnyObject], forDay: String) {
+        userProfessor.Schedule[forDay] = schedule as [String : Any]
     }
 }

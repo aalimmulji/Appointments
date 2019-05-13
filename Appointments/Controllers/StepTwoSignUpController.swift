@@ -88,7 +88,7 @@ class StepTwoSignUpController: UIViewController {
                 userProfessor.fcmToken = token
             }
             setProfessorDataToUserDefaults()
-            let query = db.collection("Professor").whereField("profId", isEqualTo: userProfessor.profId)
+            let query = db.collection("Professors").whereField("profId", isEqualTo: userProfessor.profId)
             query.getDocuments { (querySnapshot, error) in
                 guard let snapshot = querySnapshot else {
                     print("Error fetching snapshot result: \(error)")
