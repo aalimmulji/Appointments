@@ -286,7 +286,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             let startMins = Int(startDateString.split(separator: ":")[1].split(separator: " ")[0])!
             let startPeriod = startDateString.split(separator: ":")[1].split(separator: " ")[1]
             
-            if  startPeriod == "PM" {
+            if  startPeriod == "PM" && startHour > 12 {
                 startHour += 12
             }
             
@@ -298,7 +298,7 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
             let endMins = Int(trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[0])!
             let endPeriod = trimmedEndDateString.split(separator: ":")[1].split(separator: " ")[1]
             
-            if  endPeriod == "PM" {
+            if  endPeriod == "PM" && startHour > 12  {
                 endHour += 12
             }
             
@@ -332,9 +332,13 @@ class NewAppointmentController: UIViewController, UITextViewDelegate {
                     print("Error writing document: \(err)")
                 } else {
                     print("Document successfully written!")
-                    let sender = PushNotificationSender()
-                    sender.sendPushNotification(to: self.professor.fcmToken, title: "New Appointment Request", body: "New appointment request from \(self.student.firstName)")
-                    //self.navigationController?.popViewController(animated: true)
+                    let alert = UIAlertController(title: "New Appointment Created", message: "", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                        let sender = PushNotificationSender()
+                        sender.sendPushNotification(to: self.professor.fcmToken, title: "New Appointment Request", body: "New appointment request from \(self.student.firstName)")
+                        self.navigationController?.popViewController(animated: true)
+                    }))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
         } else {

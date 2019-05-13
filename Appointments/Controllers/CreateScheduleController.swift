@@ -10,6 +10,10 @@ import UIKit
 import Firebase
 import SVProgressHUD
 
+protocol UpdateScheduleDelegate {
+    func updateSchedule(updatedSchedule: [String: Any])
+}
+
 class CreateScheduleController: UIViewController {
     
     var userProfessor = Professor()
@@ -19,6 +23,8 @@ class CreateScheduleController: UIViewController {
     var weekDaysTitles = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     var weekDays = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
+    var delegate : UpdateScheduleDelegate?
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -75,6 +81,7 @@ class CreateScheduleController: UIViewController {
             }
             SVProgressHUD.dismiss()
         }
+        delegate?.updateSchedule(updatedSchedule: userProfessor.Schedule)
     }
     
 }
@@ -93,6 +100,7 @@ extension CreateScheduleController : UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToUpdateScheduleController", sender: self)
+        weekDaysTableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

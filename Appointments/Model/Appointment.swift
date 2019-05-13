@@ -22,6 +22,7 @@ struct Appointment {
     var profName : String = ""
     var status : String = ""
     var date : String = ""
+    var documentId : String = ""
     
     var dictionary : [String: Any] {
         return [
@@ -35,7 +36,8 @@ struct Appointment {
             "studentName" : studentName,
             "profName" : profName,
             "status": status,
-            "date": date
+            "date": date,
+            "documentId" : documentId
         ]
     }
 }
@@ -50,6 +52,7 @@ extension Appointment : DocumentSerializable {
             let studentName = dictionary["studentName"] as? String,
             let profName = dictionary["profName"] as? String,
             let date = dictionary["date"] as? String,
+            let documentId = dictionary["documentId"] as? String,
             let status = dictionary["status"] as? String else {return nil}
         
         var startTime = Date(), endTime = Date()
@@ -97,6 +100,7 @@ extension Appointment : DocumentSerializable {
                   studentName: studentName,
                   profName: profName,
                   status: status,
-                  date: date)
+                  date: date,
+                  documentId: documentId)
     }
 }

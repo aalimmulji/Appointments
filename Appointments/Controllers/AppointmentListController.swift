@@ -142,8 +142,11 @@ class AppointmentListController: UIViewController {
     func observeQuery() {
         
         appointments.removeAll()
-        
-        listerner1 = db.collection("appointments").whereField("studentUsername", isEqualTo: "amulji").order(by: "startTime", descending: false).addSnapshotListener({ (snapshot, error) in
+        var query = db.collection("appointments").whereField("studentUsername", isEqualTo: student.username).order(by: "startTime", descending: false)
+        if userType != "Student" {
+            query = db.collection("appointments").whereField("profId", isEqualTo: userProfessor.profId).order(by: "startTime", descending: false)
+        }
+        listerner1 = query.addSnapshotListener({ (snapshot, error) in
                 guard let snapshot = snapshot else {
                     print("Error fetching snapshot result: \(error)")
                     return
@@ -152,7 +155,8 @@ class AppointmentListController: UIViewController {
                 let models = snapshot.documents.map({ (document) -> Appointment in
                     
                     print("Documents.data(): ", document.data())
-                    if let model = Appointment(dictionary: document.data()) {
+                    if var model = Appointment(dictionary: document.data()) {
+                        model.documentId = document.documentID
                         return model
                     } else {
                         print("Unable to initialize \(Appointment.self) with document data \(document.data())")
@@ -216,6 +220,7 @@ class AppointmentListController: UIViewController {
             if let destinationVC = segue.destination as? ProfileController {
                 destinationVC.userType = userType
                 destinationVC.student = student
+                destinationVC.instanceOfHome = self
                 destinationVC.userProfessor = userProfessor
             }
         }

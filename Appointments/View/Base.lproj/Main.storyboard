@@ -526,7 +526,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkr-gj-pei">
-                                <rect key="frame" x="16" y="229" width="273" height="30"/>
+                                <rect key="frame" x="16" y="229" width="38" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="GPF-hW-JD7"/>
                                 </constraints>
@@ -544,15 +544,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VCL-CM-PZK">
-                                <rect key="frame" x="289" y="229" width="70" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="XTW-2v-GVw"/>
-                                    <constraint firstAttribute="width" constant="70" id="pyf-w5-MpJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="edit"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8nM-EC-f7p">
                                 <rect key="frame" x="16" y="267" width="103" height="30"/>
                                 <constraints>
@@ -582,15 +573,12 @@
                             <constraint firstItem="IYC-q7-hJj" firstAttribute="leading" secondItem="wQP-NQ-QBj" secondAttribute="leading" constant="16" id="BL1-Jr-nwJ"/>
                             <constraint firstItem="wDs-Zs-UUQ" firstAttribute="leading" secondItem="wQP-NQ-QBj" secondAttribute="leading" id="DFL-qy-KHP"/>
                             <constraint firstItem="Hkr-gj-pei" firstAttribute="top" secondItem="7s9-2k-XbH" secondAttribute="bottom" constant="8" id="FaZ-RA-a3m"/>
-                            <constraint firstItem="wQP-NQ-QBj" firstAttribute="trailing" secondItem="VCL-CM-PZK" secondAttribute="trailing" constant="16" id="HJN-A8-0Mg"/>
                             <constraint firstItem="7s9-2k-XbH" firstAttribute="leading" secondItem="wQP-NQ-QBj" secondAttribute="leading" constant="16" id="L7F-TB-iVf"/>
-                            <constraint firstItem="VCL-CM-PZK" firstAttribute="top" secondItem="7s9-2k-XbH" secondAttribute="bottom" constant="8" id="TWD-DH-s8x"/>
                             <constraint firstItem="wQP-NQ-QBj" firstAttribute="trailing" secondItem="IGh-ZV-Z0j" secondAttribute="trailing" constant="16" id="WPO-y1-KVd"/>
                             <constraint firstItem="lEH-zp-lYW" firstAttribute="centerX" secondItem="b0z-Sx-Z8t" secondAttribute="centerX" id="XMn-xE-fai"/>
                             <constraint firstItem="Hkr-gj-pei" firstAttribute="leading" secondItem="wQP-NQ-QBj" secondAttribute="leading" constant="16" id="XWQ-jE-27f"/>
                             <constraint firstItem="lEH-zp-lYW" firstAttribute="top" secondItem="wQP-NQ-QBj" secondAttribute="top" constant="13" id="XYJ-yq-ocx"/>
                             <constraint firstItem="IYC-q7-hJj" firstAttribute="top" secondItem="lEH-zp-lYW" secondAttribute="bottom" constant="22" id="bBb-8H-jdv"/>
-                            <constraint firstItem="VCL-CM-PZK" firstAttribute="leading" secondItem="Hkr-gj-pei" secondAttribute="trailing" id="cY0-6U-bf2"/>
                             <constraint firstItem="8nM-EC-f7p" firstAttribute="top" secondItem="Hkr-gj-pei" secondAttribute="bottom" constant="8" id="dbx-rw-XNT"/>
                             <constraint firstItem="7s9-2k-XbH" firstAttribute="top" secondItem="IYC-q7-hJj" secondAttribute="bottom" constant="8" id="j0B-al-5tE"/>
                             <constraint firstItem="IGh-ZV-Z0j" firstAttribute="leading" secondItem="wQP-NQ-QBj" secondAttribute="leading" constant="16" id="jH9-Bl-VKt"/>
@@ -605,7 +593,6 @@
                         <outlet property="acceptAppointmentButton" destination="N30-tf-cmZ" id="k9u-yu-k6D"/>
                         <outlet property="dateOfAppointmentLabel" destination="7s9-2k-XbH" id="2hf-yH-AeW"/>
                         <outlet property="descriptionTextView" destination="IGh-ZV-Z0j" id="9Mp-qk-AOt"/>
-                        <outlet property="editTimeSlotButton" destination="VCL-CM-PZK" id="jJv-BJ-pVU"/>
                         <outlet property="rejectAppointmentButton" destination="t3A-AM-x8o" id="egT-eS-uMr"/>
                         <outlet property="statusBarLabel" destination="wDs-Zs-UUQ" id="dXB-oz-l65"/>
                         <outlet property="studentNameLabel" destination="IYC-q7-hJj" id="YUJ-uf-frI"/>
@@ -1116,17 +1103,18 @@
                                     <constraint firstAttribute="height" constant="280" id="Pf6-Fo-IDh"/>
                                 </constraints>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="edit picture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byS-Nl-KxS">
-                                <rect key="frame" x="144" y="290" width="87" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.1960784314" green="0.4039215686" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrZ-a7-T6w">
-                                <rect key="frame" x="260" y="285" width="78" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="edit picture"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wrZ-a7-T6w">
+                                <rect key="frame" x="148.66666666666666" y="290" width="78" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="78" id="a7G-7K-7Dx"/>
+                                    <constraint firstAttribute="height" constant="30" id="bDx-kR-nnk"/>
+                                </constraints>
+                                <state key="normal" title="edit picture">
+                                    <color key="titleColor" red="0.1960784314" green="0.4039215686" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="editProfilePicture:" destination="Xb3-Fk-Qqx" eventType="touchUpInside" id="gv2-uL-bQx"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1136,10 +1124,19 @@
                             <constraint firstItem="pjy-Lq-8wY" firstAttribute="top" secondItem="gDO-tB-mCN" secondAttribute="top" constant="44" id="UKq-fY-9n8"/>
                             <constraint firstItem="Df2-cJ-TTQ" firstAttribute="trailing" secondItem="gDO-tB-mCN" secondAttribute="trailing" id="bco-ll-MdZ"/>
                             <constraint firstItem="pjy-Lq-8wY" firstAttribute="centerX" secondItem="n2u-HJ-nFL" secondAttribute="centerX" id="fM2-qs-tdn"/>
+                            <constraint firstItem="wrZ-a7-T6w" firstAttribute="top" secondItem="pjy-Lq-8wY" secondAttribute="bottom" constant="8" id="ky7-zV-4FO"/>
+                            <constraint firstItem="wrZ-a7-T6w" firstAttribute="centerX" secondItem="n2u-HJ-nFL" secondAttribute="centerX" id="vP6-OO-WBL"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="gDO-tB-mCN"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Profile" id="zMb-KY-nEq"/>
+                    <navigationItem key="navigationItem" title="Profile" id="zMb-KY-nEq">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Hv1-TR-g8V">
+                            <color key="tintColor" red="0.39607843139999999" green="0.85882352939999995" blue="0.74117647060000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="Xb3-Fk-Qqx" id="Gd3-RM-CBF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="profileDetailsTableHeightContraint" destination="Pf6-Fo-IDh" id="Oai-R8-85E"/>
                         <outlet property="profileDetailsTableView" destination="Df2-cJ-TTQ" id="W83-6d-Nvs"/>
@@ -1186,6 +1183,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="topNavigationBar" destination="hrh-Sn-RRd" id="elW-5w-UMh"/>
                         <outlet property="weekDaysTableView" destination="8SI-m4-vt0" id="TCg-JQ-Fn9"/>
                         <segue destination="NNs-PE-paw" kind="show" identifier="goToUpdateScheduleController" id="2av-CY-zo9"/>
                     </connections>
@@ -1243,6 +1241,7 @@
                     <connections>
                         <outlet property="scheduleListTableHeightConstraint" destination="iJd-mT-8Oh" id="mfh-k6-JqT"/>
                         <outlet property="scheduleListTableView" destination="clZ-xL-I3k" id="Qe8-Pw-C2W"/>
+                        <outlet property="topNavigationBar" destination="KoS-Y3-erw" id="ZYX-Az-Skn"/>
                         <segue destination="zD8-kJ-X1c" kind="show" identifier="addNewSchedule" id="Xbn-oY-uTt"/>
                     </connections>
                 </viewController>
@@ -1305,7 +1304,7 @@
             </objects>
             <point key="canvasLocation" x="2063.1999999999998" y="-1.4778325123152709"/>
         </scene>
-        <!--New Appointment-->
+        <!--New Schedule-->
         <scene sceneID="RBq-S5-DwO">
             <objects>
                 <viewController id="zD8-kJ-X1c" customClass="NewScheduleController" customModule="Appointments" customModuleProvider="target" sceneMemberID="viewController">
@@ -1411,7 +1410,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="da5-vr-RUB"/>
                     </view>
-                    <navigationItem key="navigationItem" title="New Appointment" id="GX2-U4-qwG">
+                    <navigationItem key="navigationItem" title="New Schedule" id="GX2-U4-qwG">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="2oD-FI-tzX">
                             <color key="tintColor" red="0.34130093459999999" green="0.65104287859999999" blue="0.63922125100000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <connections>
@@ -1422,6 +1421,7 @@
                     <connections>
                         <outlet property="endTimeTextField" destination="kSe-6z-dcR" id="gsX-Ug-v2l"/>
                         <outlet property="startTimeTextField" destination="SiP-fu-5jP" id="i2D-p9-r7j"/>
+                        <outlet property="topNavigationBar" destination="GX2-U4-qwG" id="JXn-E7-I2e"/>
                         <outlet property="typeTextField" destination="CDy-Wp-Rpk" id="Pk3-gv-AV8"/>
                     </connections>
                 </viewController>

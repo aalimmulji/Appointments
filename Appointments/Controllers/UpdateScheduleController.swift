@@ -22,13 +22,14 @@ class UpdateScheduleController: UIViewController {
     var selectedIndex = -1
     var delegate : updateScheduleForDayDelegate?
     
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     @IBOutlet weak var scheduleListTableHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var scheduleListTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.topItem?.title = dayFull
+        topNavigationBar.title = dayFull
         
         addExistingSchedulesToArray()
         

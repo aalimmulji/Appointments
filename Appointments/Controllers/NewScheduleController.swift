@@ -25,6 +25,7 @@ class NewScheduleController: UIViewController {
     var previousType = ""
     var rowSelected = -1
     var delegate : NewScheduleDelegate?
+    @IBOutlet weak var topNavigationBar: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

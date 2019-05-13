@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
@@ -93,7 +94,7 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
     
     
     @IBAction func saveAndProceedButtonPressed(_ sender: Any) {
-        
+        SVProgressHUD.show()
         let data = profilePictureImageView.image?.jpegData(compressionQuality: 0.2) as! Data
         let storageRef = storage.reference()
         var profilePictureReference = storageRef.child("student/\(student.username).jpg")
@@ -117,10 +118,12 @@ class ImageUploadController: UIViewController, UIImagePickerControllerDelegate, 
                 guard let downloadURL = url else {
                     return
                 }
+                
                 self.performSegue(withIdentifier: "goToHomePage", sender: self)
                 if let error = error {
                     print("Error: ", error)
                 }
+                SVProgressHUD.dismiss()
             })
         }
         

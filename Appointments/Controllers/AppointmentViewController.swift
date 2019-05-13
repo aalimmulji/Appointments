@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class AppointmentViewController: UIViewController {
     
@@ -34,6 +35,7 @@ class AppointmentViewController: UIViewController {
     
     
     var userType = ""
+    var student = Student()
     var appointment = Appointment()
     var dateFormatter = DateFormatter()
     let db = Firestore.firestore()
@@ -72,9 +74,36 @@ class AppointmentViewController: UIViewController {
         timeSlotOfAppointmentLabel.text = "\(dateFormatter.string(from: appointment.startTime)) - \(dateFormatter.string(from: appointment.endTime))"
         descriptionTextView.text = appointment.description
         
+        fetchProfessorFromFirestore()
         
         
     }
+    
+    func fetchProfessorFromFirestore() {
+        SVProgressHUD.show()
+        var db = Firestore.firestore()
+        let query = db.collection("students").whereField("username", isEqualTo: appointment.studentUsername)
+        query.getDocuments { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshot result: \(error)")
+                return
+            }
+            
+            if snapshot.documents.count > 0 {
+                for doc in snapshot.documents {
+                    if let model = Student(dictionary: doc.data()) {
+                        self.student = model
+                    }  else {
+                        print("Unable to initialize \(Student.self) with document data \(doc.data())")
+                    }
+                    
+                }
+            }
+            SVProgressHUD.dismiss()
+        }
+    }
+    
+    
     
     @IBAction func acceptButtonPressed(_ sender: Any) {
         UIView.animate(withDuration: 0.1) {
@@ -84,7 +113,28 @@ class AppointmentViewController: UIViewController {
             self.rejectAppointmentButton.setTitleColor(self.rejectButtonColor, for: .normal)
         }
         
-        let documentRef = db.collection("appointments").document(documentSnapshot!.documentID)
+//        let query = db.collection("appointments").whereField("profId", isEqualTo: userProfessor.profId)
+//        query.getDocuments { (querySnapshot, error) in
+//            guard let snapshot = querySnapshot else {
+//                print("Error fetching snapshot result: \(error)")
+//                return
+//            }
+//
+//            if snapshot.documents.count > 0 {
+//                for doc in snapshot.documents {
+//                    doc.reference.setData(self.userProfessor.dictionary) { err in
+//                        if let err = err {
+//                            print("Error writing document: \(err)")
+//                        } else {
+//                            print("Document successfully written!")
+//                            self.performSegue(withIdentifier: "goToImageUploadPage", sender: self)
+//                        }
+//                    }
+//                }
+//            }
+//        }
+        
+        let documentRef = db.collection("appointments").document(appointment.documentId)
         documentRef.updateData([
             "status": "Accepted"
         ]) { err in
@@ -92,6 +142,8 @@ class AppointmentViewController: UIViewController {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: self.student.fcmToken, title: "Appointment Accepted", body: "\(self.appointment.profName) accepted your appointment")
             }
         }
         
@@ -105,7 +157,7 @@ class AppointmentViewController: UIViewController {
             self.rejectAppointmentButton.setTitleColor(.white, for: .normal)
         }
         
-        let documentRef = db.collection("appointments").document(documentSnapshot!.documentID)
+        let documentRef = db.collection("appointments").document(appointment.documentId)
         documentRef.updateData([
             "status": "Rejected"
         ]) { err in
@@ -113,6 +165,8 @@ class AppointmentViewController: UIViewController {
                 print("Error updating document: \(err)")
             } else {
                 print("Document successfully updated")
+                let sender = PushNotificationSender()
+                sender.sendPushNotification(to: self.student.fcmToken, title: "Appointment Rejected", body: "\(self.appointment.profName) rejected your appointment")
             }
         }
     }

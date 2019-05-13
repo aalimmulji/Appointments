@@ -131,10 +131,20 @@ class SideBarView: UIView, UITableViewDelegate, UITableViewDataSource {
             cell.addSubview(cellImg)
             cellImg.layer.cornerRadius = 40
             cellImg.layer.masksToBounds = true
-            cellImg.contentMode = .scaleAspectFill
+            cellImg.contentMode = .scaleAspectFit
             cellImg.image = UIImage(named: "profile_icon")
             if userType == "Student" {
                 let imageStorageRef = Storage.storage().reference().child("student/\(student.username).jpg")
+                imageStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
+                    if let error = error {
+                        print("Error downloading the image: \(error)")
+                    } else {
+                        let image = UIImage(data: data!)
+                        cellImg.image = image
+                    }
+                }
+            } else {
+                let imageStorageRef = Storage.storage().reference().child("professor/\(userProfessor.profId).jpg")
                 imageStorageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) in
                     if let error = error {
                         print("Error downloading the image: \(error)")
