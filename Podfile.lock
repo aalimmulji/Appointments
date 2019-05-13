@@ -199,6 +199,7 @@ PODS:
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
   - SDWebImage/Core (4.4.6)
+  - SVProgressHUD (2.2.5)
   - TwitterCore (3.2.0)
   - TwitterKit (3.4.2):
     - TwitterCore (>= 3.2.0)
@@ -215,6 +216,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - FirebaseUI
   - FSCalendar
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -249,6 +251,7 @@ SPEC REPOS:
     - Neon
     - Protobuf
     - SDWebImage
+    - SVProgressHUD
     - TwitterCore
     - TwitterKit
 
@@ -284,9 +287,10 @@ SPEC CHECKSUMS:
   Neon: 7fb5a9327e7e57911843f608e08f4893a74deaf9
   Protobuf: 7a877b7f3e5964e3fce995e2eb323dbc6831bb5a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   TwitterCore: 8cbc9ad34d91c63a0035ea05bfbfc0d7ca72a28c
   TwitterKit: 5e4f41d70b9abdb41df5467f52d7aa2c0fd26ebb
 
-PODFILE CHECKSUM: 50432cba4e942ae9138e1bc538fc1512fdb063bd
+PODFILE CHECKSUM: 0cdf458785a8ceb9b53cd6a40cd615f54418090d
 
 COCOAPODS: 1.5.3

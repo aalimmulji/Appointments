@@ -63,7 +63,11 @@ class ProfileController: UIViewController {
                 destinationVC.previousValue = profileRowValues[indexPath.row]
                 destinationVC.selectedRow = indexPath.row
             }
-                
+        }
+        if segue.identifier == "goToScheduleController" {
+            if let destinationVC = segue.destination as? CreateScheduleController {
+                destinationVC.userProfessor = userProfessor
+            }
         }
     }
     
@@ -86,8 +90,9 @@ extension ProfileController: UITableViewDelegate, UITableViewDataSource {
             if indexPath.row == 4 {
                 performSegue(withIdentifier: "goToScheduleController", sender: self)
             }
+        } else {
+            performSegue(withIdentifier: "goToUpdateProfileInfo", sender: self)
         }
-        performSegue(withIdentifier: "goToUpdateProfileInfo", sender: self)
     }
     
 }

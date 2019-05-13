@@ -7,17 +7,21 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateScheduleController: UIViewController {
     
+    var userProfessor = Professor()
     
     @IBOutlet weak var weekDaysTableView: UITableView!
     
-    var weekDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    var weekDaysTitles = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    var weekDays = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        fetchScheduleForUserProfessor()
         weekDaysTableView.delegate = self
         weekDaysTableView.dataSource = self
         
@@ -26,6 +30,42 @@ class CreateScheduleController: UIViewController {
         weekDaysTableView.isScrollEnabled = false
         weekDaysTableView.separatorStyle = .none
         
+    }
+    
+    func fetchScheduleForUserProfessor() {
+        var db = Firestore.firestore()
+        let query = db.collection("Professors").whereField("profId", isEqualTo: userProfessor.profId)
+        
+        query.getDocuments { (querySnapshot, error) in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshot result: \(error)")
+                return
+            }
+            
+            if snapshot.documents.count > 0 {
+                for doc in snapshot.documents {
+                    
+                    if let model = Professor(dictionary: doc.data()) {
+                        self.userProfessor = model
+                    }  else {
+                        print("Unable to initialize \(Professor.self) with document data \(doc.data())")
+                    }
+                    
+                }
+            }
+            
+        }
+        
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToUpdateScheduleController" {
+            guard let indexPath = weekDaysTableView.indexPathForSelectedRow else {return}
+            if let destinationVC = segue.destination as? UpdateScheduleController {
+                destinationVC.scheduleForDay = userProfessor.Schedule[weekDays[indexPath.row]] as! [String: Any]
+            }
+        }
     }
     
 
@@ -37,13 +77,13 @@ extension CreateScheduleController : UITableViewDelegate, UITableViewDataSource 
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = weekDaysTableView.dequeueReusableCell(withIdentifier: "ProfileInfoCell", for: indexPath) as! ProfileInfoCell
-        cell.profileRowTitleLabel.text = weekDays[indexPath.row]
+        cell.profileRowTitleLabel.text = weekDaysTitles[indexPath.row]
         cell.profileRowValueLabel.text = ""
         return cell
         
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        performSegue(withIdentifier: "goToUpdateScheduleController", sender: self)
     }
 }

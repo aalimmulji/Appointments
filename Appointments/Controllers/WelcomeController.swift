@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseUI
+import SVProgressHUD
 
 class WelcomeController: UIViewController, FUIAuthDelegate {
     
@@ -25,7 +26,7 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
     var student = Student()
     var userProfessor = Professor()
     var isNewUser = true
-    
+    var weekDays = ["Mon", "Tue", "Wed", "Thur", "Fri", "Sat", "Sun"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,8 +153,8 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
                     if let model = Student(dictionary: doc.data()) {
                         self.student = model
                         self.setStudentDataToUserDefaults()
-                        self.performSegue(withIdentifier: "goToStepTwoSignUpPage", sender: self)
-                        //self.performSegue(withIdentifier: "goToHomePage", sender: self)
+                        //self.performSegue(withIdentifier: "goToStepTwoSignUpPage", sender: self)
+                        self.performSegue(withIdentifier: "goToHomePage", sender: self)
                     }  else {
                         print("Unable to initialize \(Student.self) with document data \(doc.data())")
                     }
@@ -186,7 +187,7 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
                 return
             }
     
-            if snapshot.documents.count > 0 {
+            if snapshot.documents.count > 0 {       
                 for doc in snapshot.documents {
                     
                     if let model = Professor(dictionary: doc.data()) {
@@ -200,6 +201,30 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
                     
                 }
             } else {
+                var schedule = [
+                    "Mon" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Tue" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Wed" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Thur" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Fri" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Sat" : [
+                        "isAvailableToday" : false
+                    ],
+                    "Sun" : [
+                        "isAvailableToday" : false
+                    ]
+                ]
+                self.userProfessor.Schedule = schedule
                 var newProfDoc = db.collection("Professors").document()
                 newProfDoc.setData(self.userProfessor.dictionary) {
                     err in
@@ -266,6 +291,8 @@ class WelcomeController: UIViewController, FUIAuthDelegate {
                 if let emailId = profileDictionary["email"] as? String {
                     userProfessor.emailId = emailId
                     userProfessor.profId = String(userProfessor.emailId.split(separator: "@")[0])
+                    
+                    
                     
                     isNewProfessor()
                 } else {

@@ -18,4 +18,5 @@ target 'Appointments' do
 	pod 'Firebase/Storage'
 	pod 'FirebaseUI'
 	pod 'Firebase/Messaging'
+	pod 'SVProgressHUD'
 end
