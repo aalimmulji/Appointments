@@ -20,6 +20,8 @@ There are two sets of users, a professor, and a student. A professor can registe
 
 ![alt text](https://github.com/aalimmulji/Appointments/blob/master/Appointments/Assets.xcassets/new_appointment.png)
 
+![alt text](https://github.com/aalimmulji/Appointments/blob/master/Appointments/Assets.xcassets/new_appointment_2.png)
+
 ![alt text](https://github.com/aalimmulji/Appointments/blob/master/Appointments/Assets.xcassets/push_notification.png)
 
 ![alt text](https://github.com/aalimmulji/Appointments/blob/master/Appointments/Assets.xcassets/profile.png)
